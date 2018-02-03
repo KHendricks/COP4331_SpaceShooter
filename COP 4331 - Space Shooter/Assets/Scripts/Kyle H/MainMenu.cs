@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour 
 {
+	GameObject disconnectedIcons;
+	GameObject connectedIcons;
+
 	private void Awake()
 	{
+		disconnectedIcons = GameObject.Find("Disconnected");
+		connectedIcons = GameObject.Find("Connected");
+
 		// Google Play Service
 		PlayGamesPlatform.Activate();
 		OnConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
@@ -17,15 +23,11 @@ public class MainMenu : MonoBehaviour
 	{
 		if (status)
 		{
-			GameObject disconnectedIcons = GameObject.Find("Disconnected");
-			GameObject connectedIcons = GameObject.Find("Connected");
 			disconnectedIcons.SetActive(false);
 			connectedIcons.SetActive(true);
 		}
 		else
 		{
-			GameObject connectedIcons = GameObject.Find("Connected");
-			GameObject disconnectedIcons = GameObject.Find("Disconnected");
 			disconnectedIcons.SetActive(true);
 			connectedIcons.SetActive(false);
 		}
