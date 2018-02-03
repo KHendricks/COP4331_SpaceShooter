@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 		{
 			GameObject disconnectedIcons = GameObject.Find("Disconnected");
 			GameObject connectedIcons = GameObject.Find("Connected");
-			//disconnectedIcons.SetActive(false);
+			disconnectedIcons.SetActive(false);
 			connectedIcons.SetActive(true);
 		}
 		else
