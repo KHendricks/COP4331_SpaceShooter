@@ -42,6 +42,38 @@ public class MainMenu : MonoBehaviour
 		});
 	}
 
+	// Logs users out and swaps back to login button
+	public void LogoutClick()
+	{
+		PlayGamesPlatform.Instance.SignOut();
+		disconnectedIcons.SetActive(true);
+		connectedIcons.SetActive(false);
+	}
+
+	public void OnLeaderboardClick()
+	{
+		if (Social.localUser.authenticated)
+		{
+			Social.ShowLeaderboardUI();
+		}
+	}
+
+	public void UnlockAchievement(string achievementID)
+	{
+		Social.ReportProgress(achievementID, 100.0f, (bool success) =>
+		{
+			Debug.Log("Achievement Unlocked: " + success.ToString());
+		});
+	}
+
+	public void OnAchievementClick()
+	{
+		if (Social.localUser.authenticated)
+		{
+			Social.ShowAchievementsUI();
+		}
+	}
+
 	public void PlayGame()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
