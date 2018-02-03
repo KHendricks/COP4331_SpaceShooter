@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
 		// Google Play Service
 		PlayGamesPlatform.Activate();
 		OnConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
-
 	}
 
 	private void OnConnectionResponse(bool status)
@@ -20,7 +19,7 @@ public class MainMenu : MonoBehaviour
 		{
 			GameObject disconnectedIcons = GameObject.Find("Disconnected");
 			GameObject connectedIcons = GameObject.Find("Connected");
-			disconnectedIcons.SetActive(false);
+			//disconnectedIcons.SetActive(false);
 			connectedIcons.SetActive(true);
 		}
 		else

@@ -244,8 +244,9 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: A:/Kyle/Documents/GitHub/COP4331_SpaceShooter/COP 4331 - Space
+    Shooter/test.keystore
+  AndroidKeyaliasName: test
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
