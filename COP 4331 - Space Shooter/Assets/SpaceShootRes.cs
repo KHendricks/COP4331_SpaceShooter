@@ -21,7 +21,7 @@
 /// Resources.
 ///
 
-
+//This is my comment. -Jerry
 public static class SpaceShootRes
 {
         public const string achievement_test5 = "CgkIud6V-NILEAIQBQ"; // <GPGSID>
