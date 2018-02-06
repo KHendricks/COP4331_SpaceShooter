@@ -4,15 +4,15 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: c49d088355efee846a6570a68b4d2d72
+  productGUID: 01ece9feb8ca64623937009d88ae5205
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
-  defaultScreenOrientation: 0
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Project Team 3
-  productName: COP 4331 - Space Shooter
+  companyName: InternetWebsite
+  productName: Space Shooty
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -56,11 +56,11 @@ PlayerSettings:
   displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 0
-  allowedAutorotateToLandscapeRight: 0
-  allowedAutorotateToLandscapeLeft: 0
+  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToLandscapeRight: 1
+  allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
-  use32BitDisplayBuffer: 0
+  use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
   androidBlitType: 0
@@ -158,7 +158,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: edu.ucf.team3
+    Android: website.internetwebsite.spaceShooty
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -244,13 +244,12 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: A:/Kyle/Documents/GitHub/COP4331_SpaceShooter/COP 4331 - Space
-    Shooter/test.keystore
+  AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
-  androidEnableBanner: 1
+  androidEnableBanner: 0
   androidUseLowAccuracyLocation: 0
   m_AndroidBanners:
   - width: 320
@@ -258,7 +257,39 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: Android
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: e0671a6b36c7a4136b4a7531c2645781, type: 3}
+      m_Width: 192
+      m_Height: 192
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 144
+      m_Height: 144
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 96
+      m_Height: 96
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 72
+      m_Height: 72
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 48
+      m_Height: 48
+      m_Kind: 0
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 36
+      m_Height: 36
+      m_Kind: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
@@ -459,7 +490,7 @@ PlayerSettings:
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
   ps4ProGarlicHeapSize: 2560
-  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
+  ps4Passcode: DAMmcEwaXoj73UMncW1eb8uwJcYV6vhK
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -505,7 +536,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: F69AzBlax3CF3EDNhm3soLBPh71Yexui
+  psp2PackagePassword: 514hFyFnnzuoTEZ5lZhKhbG0DnTIi8cn
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -551,8 +582,7 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols:
-    4: NO_GPGS
+  scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
@@ -561,14 +591,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: COP 4331 - Space Shooter
+  metroPackageName: Space Shooty
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: COP 4331 - Space Shooter
+  metroApplicationDescription: Space Shooty
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
@@ -633,13 +663,12 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled:
-    UNet: 1
+  cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 6b3101c7-f392-4df4-86f0-08cc1ad04828
-  projectName: COP 4331 - Space Shooter (1)
-  organizationId: elykh
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
