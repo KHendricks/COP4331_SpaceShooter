@@ -20,8 +20,13 @@ public class playerController : MonoBehaviour
 		var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
         var z = Input.GetAxis("Vertical") * Time.deltaTime * 8.0f;
 		
-        transform.Rotate(0, 0,x);
-		transform.Translate(0, z,0);
+		/*
+		if((GetComponent<Rigidbody2D>().angularVelocity < 80f && x>0)|| (x<0&& GetComponent<Rigidbody2D>().angularVelocity > -80f))
+			GetComponent<Rigidbody2D>().AddTorque(x*4);
+        
+        if(GetComponent<Rigidbody2D>().velocity.magnitude < 200f)
+			GetComponent<Rigidbody2D>().AddForce(transform.up*z*4,ForceMode2D.Impulse);
+		*/
         scoretext.text = ""+score;
 	}
 	public void Shoot()

@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class Enemy2 : MonoBehaviour 
 {
 	private int health = 3;
-	private int bulletspeed = 20;
+	private int bulletspeed = 200;
 	public GameObject player;
 	public GameObject enemyBullet;
 	void Update () 
 	{
 		if(bulletspeed==0)
 		{
-			Quaternion temp = transform.rotation;
+			Quaternion temp =  Quaternion.AngleAxis(0f,Vector3.forward);
 			Physics2D.IgnoreCollision(Instantiate(enemyBullet,transform.position,temp).GetComponent<Collider2D>(),GetComponent<Collider2D>());
-			bulletspeed=20;
+			bulletspeed=200;
 		}
 		else
 		{
