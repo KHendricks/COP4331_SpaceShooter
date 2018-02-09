@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 	
 	void Update () 
 	{
+		Screen.orientation = ScreenOrientation.AutoRotation; // this just rotates the screen -Jerry
 		if (enemyNumber <= 0)
 		{
 			winCondition();
