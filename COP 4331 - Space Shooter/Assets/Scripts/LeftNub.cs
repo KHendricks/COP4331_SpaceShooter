@@ -27,10 +27,17 @@ public class LeftNub : MonoBehaviour
 		{	
 			touch= Input.touches[i];
 			
-			if(GetComponent<Collider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(touch.position)) && touch.phase == TouchPhase.Began) 
+			if(touch.phase == TouchPhase.Began)
 			{
-				touchStart = touch.position;
-				touchIndex = touch.fingerId;	
+				if(touch.position.x < Screen.width/2)
+				{
+					Vector3 temp = transform.position;
+					temp.x=(Camera.main.ScreenToWorldPoint(touch.position).x);
+					temp.y=(Camera.main.ScreenToWorldPoint(touch.position).y);
+					transform.position = temp;
+					touchStart = touch.position;
+					touchIndex = touch.fingerId;	
+				}
 			}
 			if(touchIndex==touch.fingerId)
 			{
@@ -44,7 +51,6 @@ public class LeftNub : MonoBehaviour
 					touchIndex=-1;
 				}
 				player.transform.rotation = Quaternion.FromToRotation(transform.up,touchEnd-touchStart); 
-			
 			}
 		}
 		

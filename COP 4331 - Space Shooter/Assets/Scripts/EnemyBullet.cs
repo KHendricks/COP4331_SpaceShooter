@@ -8,10 +8,13 @@ public class EnemyBullet : MonoBehaviour
 {
 	public GameObject player;
 	
+
+	
 	void Update () 
 	{
-		Vector3 temp;
-		transform.Translate(0, -0.05F,0);
+		//transform.Translate(0, 0.05F,0);
+		GetComponent<Rigidbody2D>().AddForce((player.transform.position-transform.position).normalized*4f,ForceMode2D.Force);
+		
 	}
 	
 	void OnCollisionEnter2D (Collision2D col)

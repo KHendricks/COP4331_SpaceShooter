@@ -24,22 +24,33 @@ public class RightNub : MonoBehaviour
 		{	
 			Touch touch= Input.touches[i];
 			
-			if(GetComponent<Collider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(touch.position)) && touch.phase == TouchPhase.Began) 
+			if(touch.phase == TouchPhase.Began)
 			{
-				touchStart = touch.position;
-				touchIndex = touch.fingerId;	
+				if(touch.position.x > Screen.width/2)
+				{
+					Vector3 temp = transform.position;
+					temp.x=(Camera.main.ScreenToWorldPoint(touch.position).x);
+					temp.y=(Camera.main.ScreenToWorldPoint(touch.position).y);
+					transform.position = temp;
+					touchStart = touch.position;
+					touchIndex = touch.fingerId;	
+				}
 			}
+			
 			if(touchIndex==touch.fingerId)
 			{
 				if(touch.phase == TouchPhase.Moved)
 				{
-					touchEnd=touch.position;				
+					touchEnd=touch.position;
 				}
 				if(touch.phase == TouchPhase.Ended)
 				{
 					touchIndex=-1;
 				}
-				player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position+touchEnd - touchStart,0.1f);
+				if(player.GetComponent<Rigidbody2D>().velocity.magnitude < 20f)
+				{
+					player.GetComponent<Rigidbody2D>().AddForce((touchEnd-touchStart).normalized*16f,ForceMode2D.Force);
+				}
 			}
 		}
 

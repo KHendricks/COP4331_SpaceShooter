@@ -19,7 +19,6 @@ public class PlayFeatures : MonoBehaviour
 		connectedMenu = GameObject.Find("Connected");
 
 		PlayGamesPlatform.Activate();
-		PlayGamesPlatform.Instance.SignOut();
 		CheckConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
 	}
 
