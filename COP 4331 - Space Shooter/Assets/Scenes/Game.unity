@@ -1972,56 +1972,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1447295580142314, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
-      propertyPath: m_Layer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114676204735816280, guid: 05581364625d546b0bcfa002d8556c3b,
+    - target: {fileID: 114754542499633366, guid: 05581364625d546b0bcfa002d8556c3b,
         type: 2}
-      propertyPath: bullet
+      propertyPath: scoretext
       value: 
-      objectReference: {fileID: 1170063250681920, guid: 4586ed3f5ce7540a2817f9b28ea7356d,
-        type: 2}
-    - target: {fileID: 212302995476753086, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 7593bd6d7d4864c72984cb288d944caa, type: 2}
-    - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_UseAutoMass
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_LinearDrag
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 2000
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114676204735816280, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
+      objectReference: {fileID: 948567459}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &669228126
@@ -2955,52 +2911,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1447295580142314, guid: 05581364625d546b0bcfa002d8556c3b,
     type: 2}
   m_PrefabInternal: {fileID: 648394649}
---- !u!114 &975365708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975365707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fecfc595a7184773867f270c77799c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  scoretext: {fileID: 948567459}
-  bullet: {fileID: 1024348242776256, guid: 4586ed3f5ce7540a2817f9b28ea7356d, type: 2}
---- !u!95 &975365709
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975365707}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 52a34de922e114c75ae7b9951297be9a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!58 &975365712
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975365707}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7593bd6d7d4864c72984cb288d944caa, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &1169588147
 GameObject:
   m_ObjectHideFlags: 0
