@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 50096370}
   m_Layer: 0
   m_Name: Enemy-01 (3)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,7 +637,6 @@ RectTransform:
   - {fileID: 346866349}
   - {fileID: 361394280}
   - {fileID: 948567458}
-  - {fileID: 341961773}
   m_Father: {fileID: 540635096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -646,80 +645,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &341961772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 341961773}
-  - component: {fileID: 341961775}
-  - component: {fileID: 341961774}
-  m_Layer: 5
-  m_Name: MissionSuccess
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &341961773
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 341961772}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 313203559}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &341961774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 341961772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.9117647, g: 0.060337372, b: 0.060337372, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: MISSION SUCCESS
---- !u!222 &341961775
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 341961772}
 --- !u!1 &346866348
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +793,7 @@ GameObject:
   - component: {fileID: 349273613}
   m_Layer: 0
   m_Name: Enemy-01 (1)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1245,7 +1170,7 @@ GameObject:
   - component: {fileID: 411999314}
   m_Layer: 0
   m_Name: Enemy-01 (7)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1368,7 +1293,7 @@ GameObject:
   - component: {fileID: 450325766}
   m_Layer: 0
   m_Name: Enemy-01 (5)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1491,7 +1416,7 @@ GameObject:
   - component: {fileID: 498419238}
   m_Layer: 0
   m_Name: Enemy-01 (6)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1777,7 +1702,7 @@ GameObject:
   - component: {fileID: 564576199}
   m_Layer: 0
   m_Name: Enemy-02 (1)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2015,39 +1940,38 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4558235652912926, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
+    - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2061,13 +1985,9 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114676204735816280, guid: 05581364625d546b0bcfa002d8556c3b,
-=======
-    - target: {fileID: 114759416945869806, guid: d17dae92803611d45a840cb808b8f2b7,
->>>>>>> other-branch
         type: 2}
-      propertyPath: scoretext
+      propertyPath: bullet
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 1170063250681920, guid: 4586ed3f5ce7540a2817f9b28ea7356d,
         type: 2}
     - target: {fileID: 212302995476753086, guid: 05581364625d546b0bcfa002d8556c3b,
@@ -2103,11 +2023,6 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 114676204735816280, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
-=======
-      objectReference: {fileID: 948567459}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
->>>>>>> other-branch
   m_IsPrefabParent: 0
 --- !u!1 &669228126
 GameObject:
@@ -2243,7 +2158,7 @@ GameObject:
   - component: {fileID: 695737498}
   m_Layer: 0
   m_Name: Enemy-01
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2414,7 +2329,7 @@ GameObject:
   - component: {fileID: 795946050}
   m_Layer: 0
   m_Name: Enemy-02
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2633,7 +2548,7 @@ GameObject:
   - component: {fileID: 894407398}
   m_Layer: 0
   m_Name: Enemy-01 (2)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3131,10 +3046,9 @@ SpriteRenderer:
   m_MaskInteraction: 0
 --- !u!1 &975365707 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1597486119413680, guid: d17dae92803611d45a840cb808b8f2b7,
+  m_PrefabParentObject: {fileID: 1447295580142314, guid: 05581364625d546b0bcfa002d8556c3b,
     type: 2}
   m_PrefabInternal: {fileID: 648394649}
-<<<<<<< HEAD
 --- !u!114 &975365708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3249,8 +3163,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079728590}
-=======
->>>>>>> other-branch
 --- !u!1 &1169588147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,47 +3754,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1612848817
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1612848819}
-  - component: {fileID: 1612848818}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1612848818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1612848817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f4053c1ebf8e84aa0382cdf49240a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyNumber: 0
---- !u!4 &1612848819
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1612848817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661198798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4017,7 +3888,7 @@ GameObject:
   - component: {fileID: 1862012268}
   m_Layer: 0
   m_Name: Enemy-01 (4)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
