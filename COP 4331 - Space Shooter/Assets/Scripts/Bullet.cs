@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
         if(col.gameObject.name != "Bullet(Clone)"&& col.gameObject.name != "Ship")
         {
 			Destroy(gameObject);
-			GameController.game.enemyNumber--;
         }
     }
 	
