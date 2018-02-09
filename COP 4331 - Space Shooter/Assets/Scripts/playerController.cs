@@ -17,16 +17,39 @@ public class playerController : MonoBehaviour
 	}
 	void Update () 
 	{
-		var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 8.0f;
-		
-		/*
-		if((GetComponent<Rigidbody2D>().angularVelocity < 80f && x>0)|| (x<0&& GetComponent<Rigidbody2D>().angularVelocity > -80f))
-			GetComponent<Rigidbody2D>().AddTorque(x*4);
+		if (Input.GetKey("w"))
+		{
+			if(GetComponent<Rigidbody2D>().velocity.magnitude < 20f)
+				GetComponent<Rigidbody2D>().AddForce(Vector3.up*32,ForceMode2D.Force);
+		}
+		if (Input.GetKey("a"))
+		{
+			if(GetComponent<Rigidbody2D>().velocity.magnitude < 20f)
+				GetComponent<Rigidbody2D>().AddForce(Vector3.right*-32,ForceMode2D.Force);
+		}
+		if (Input.GetKey("s"))
+		{
+			if(GetComponent<Rigidbody2D>().velocity.magnitude < 20f)
+				GetComponent<Rigidbody2D>().AddForce(Vector3.up*-32,ForceMode2D.Force);
+		}
+		if (Input.GetKey("d"))
+		{
+			if(GetComponent<Rigidbody2D>().velocity.magnitude < 20f)
+				GetComponent<Rigidbody2D>().AddForce(Vector3.right*32,ForceMode2D.Force);
+		}
+		if (Input.GetKey("q"))
+		{
+			if((GetComponent<Rigidbody2D>().angularVelocity < 800f))
+				GetComponent<Rigidbody2D>().AddTorque(800f);
+		}
+		if (Input.GetKey("e"))
+		{
+			if(GetComponent<Rigidbody2D>().angularVelocity > -800f)
+				GetComponent<Rigidbody2D>().AddTorque(-800f);
+		}
+	
         
-        if(GetComponent<Rigidbody2D>().velocity.magnitude < 200f)
-			GetComponent<Rigidbody2D>().AddForce(transform.up*z*4,ForceMode2D.Impulse);
-		*/
+		
         scoretext.text = ""+score;
 	}
 	public void Shoot()

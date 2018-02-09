@@ -6,14 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class EnemyBullet : MonoBehaviour 
 {
-	public GameObject player;
+	private GameObject player;
 	
-
+	void Start()
+	{
+		player = GameObject.Find("Ship");
+	}
 	
 	void Update () 
 	{
-		//transform.Translate(0, 0.05F,0);
-		GetComponent<Rigidbody2D>().AddForce((player.transform.position-transform.position).normalized*4f,ForceMode2D.Force);
+		Vector3 temp = (player.transform.position - transform.position);
+		temp.Normalize();
+		float angles = Mathf.Atan2(GetComponent<Rigidbody2D>().velocity.y, GetComponent<Rigidbody2D>().velocity.x);
+		transform.rotation = Quaternion.Euler(0f, 0f, angles*Mathf.Rad2Deg-90); 
+	
+		GetComponent<Rigidbody2D>().AddForce(temp*2,ForceMode2D.Force);
+		
 		
 	}
 	

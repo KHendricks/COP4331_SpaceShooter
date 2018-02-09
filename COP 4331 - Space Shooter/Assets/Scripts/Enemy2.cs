@@ -13,8 +13,7 @@ public class Enemy2 : MonoBehaviour
 	{
 		if(bulletspeed==0)
 		{
-			Quaternion temp =  Quaternion.AngleAxis(0f,Vector3.forward);
-			Physics2D.IgnoreCollision(Instantiate(enemyBullet,transform.position,temp).GetComponent<Collider2D>(),GetComponent<Collider2D>());
+			Physics2D.IgnoreCollision(Instantiate(enemyBullet,transform.position,transform.rotation).GetComponent<Collider2D>(),GetComponent<Collider2D>());
 			bulletspeed=200;
 		}
 		else
