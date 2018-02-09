@@ -1976,6 +1976,7 @@ Prefab:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 114759416945869806, guid: d17dae92803611d45a840cb808b8f2b7,
 =======
     - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
@@ -1990,6 +1991,8 @@ Prefab:
 >>>>>>> parent of 7de3de5... Simple additions
 =======
 >>>>>>> parent of 7de3de5... Simple additions
+=======
+>>>>>>> parent of 7de3de5... Simple additions
     - target: {fileID: 4189065302692648, guid: 05581364625d546b0bcfa002d8556c3b, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -1999,6 +2002,9 @@ Prefab:
       value: 0.5
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 7de3de5... Simple additions
+=======
 >>>>>>> parent of 7de3de5... Simple additions
 =======
 >>>>>>> parent of 7de3de5... Simple additions
@@ -2010,6 +2016,7 @@ Prefab:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114676204735816280, guid: 05581364625d546b0bcfa002d8556c3b,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2026,6 +2033,11 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: d17dae92803611d45a840cb808b8f2b7, type: 2}
 =======
 =======
+>>>>>>> parent of 7de3de5... Simple additions
+=======
+        type: 2}
+      propertyPath: bullet
+      value: 
 >>>>>>> parent of 7de3de5... Simple additions
 =======
         type: 2}
@@ -2065,12 +2077,16 @@ Prefab:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 50159065875278528, guid: 05581364625d546b0bcfa002d8556c3b,
         type: 2}
       propertyPath: m_AngularDrag
       value: 2000
+=======
+      value: 0.05
+>>>>>>> parent of 7de3de5... Simple additions
 =======
       value: 0.05
 >>>>>>> parent of 7de3de5... Simple additions
@@ -2087,7 +2103,10 @@ Prefab:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> parent of 7de3de5... Simple additions
 =======
 >>>>>>> parent of 7de3de5... Simple additions
 =======
@@ -3124,7 +3143,10 @@ GameObject:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 7de3de5... Simple additions
 =======
 >>>>>>> parent of 7de3de5... Simple additions
 =======
@@ -3145,6 +3167,7 @@ MonoBehaviour:
   score: 0
   scoretext: {fileID: 948567459}
   bullet: {fileID: 1024348242776256, guid: 4586ed3f5ce7540a2817f9b28ea7356d, type: 2}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3171,6 +3194,8 @@ Animator:
 >>>>>>> parent of 7de3de5... Simple additions
 =======
 >>>>>>> parent of 7de3de5... Simple additions
+=======
+>>>>>>> parent of 7de3de5... Simple additions
 --- !u!58 &975365712
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3185,6 +3210,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3258,6 +3284,9 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079728590}
 >>>>>>> master
+=======
+  m_Radius: 0.8
+>>>>>>> parent of 7de3de5... Simple additions
 =======
   m_Radius: 0.8
 >>>>>>> parent of 7de3de5... Simple additions
