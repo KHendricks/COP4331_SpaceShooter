@@ -33,6 +33,7 @@ public class Enemy2 : MonoBehaviour
 				Destroy(col.gameObject);
 				Destroy(gameObject);
 				player.GetComponent<playerController>().score+=150;
+				GameController.game.enemyNumber--;
 			}
 			else
 			{
