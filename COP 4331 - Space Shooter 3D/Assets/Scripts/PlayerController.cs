@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+	public int score = 0;
 	public Rigidbody rb;
+	public Text scoreText;
 
 	// Update is called once per frame
 	void FixedUpdate ()
@@ -28,5 +31,17 @@ public class PlayerController : MonoBehaviour
 		{
 			rb.AddForce(-1000 * Time.deltaTime, 0, 0);
 		}
+
+		scoreText.text = "" + score;
+	}
+
+	public float getScore()
+	{
+		return score;
+	}
+
+	public void addToScore(int val)
+	{
+		score += val;
 	}
 }
