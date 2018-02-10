@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	public float tilt;
 	public float speed;
 	public MovementNub movementNub;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -25,8 +26,16 @@ public class PlayerController : MonoBehaviour
 
 	void PlayerMovement()
 	{
+		// Keyboard Movement
 		float moveHorizontal = Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
+
+		// Joystick Movement
+		if (movementNub.inputVector != Vector3.zero)
+		{
+			moveHorizontal = movementNub.inputVector.x;
+			moveVertical = movementNub.inputVector.z;
+		}
 
 		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 		rb.velocity = movement * speed;
