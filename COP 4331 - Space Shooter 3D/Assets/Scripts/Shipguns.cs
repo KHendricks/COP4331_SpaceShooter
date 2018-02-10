@@ -11,13 +11,13 @@ public class Shipguns : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetKeyDown("space"))
 		{
 			Shoot();
 		}
 	}
 
-	void Shoot()
+	public void Shoot()
 	{
 		RaycastHit hit;
 		muzzleFlash.Play();

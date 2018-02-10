@@ -8,36 +8,30 @@ public class PlayerController : MonoBehaviour
 	public int score = 0;
 	public Rigidbody rb;
 	public Text scoreText;
+	public float tilt;
+	public float speed;
+	public MovementNub movementNub;
+	void Start()
+	{
+		rb = GetComponent<Rigidbody>();
+	}
 
 	// Update is called once per frame
 	void FixedUpdate ()
  	{
-		if (Input.GetKey("w"))
-		{
-			rb.AddForce(0, 0, 5000 * Time.deltaTime);
-		}
-
-		if (Input.GetKey("s"))
-		{
-			rb.AddForce(0, 0, -4000 * Time.deltaTime);
-		}
-
-		if (Input.GetKey("d"))
-		{
-			rb.AddForce(3500 * Time.deltaTime, 0, 0);
-			rb.AddTorque (0, 0, -75 * Time.deltaTime);
-		}
-
-		if (Input.GetKey("a"))
-		{
-			rb.AddForce(-3500 * Time.deltaTime, 0, 0);
-			rb.AddTorque (0, 0, 75 * Time.deltaTime);
-
-
-
-		}
-
+		PlayerMovement();
 		scoreText.text = "" + score;
+	}
+
+	void PlayerMovement()
+	{
+		float moveHorizontal = Input.GetAxis("Horizontal");
+		float moveVertical = Input.GetAxis("Vertical");
+
+		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+		rb.velocity = movement * speed;
+
+		rb.rotation = Quaternion.Euler(rb.velocity.z * (tilt / 5), 180, rb.velocity.x * -tilt);
 	}
 
 	public float getScore()
