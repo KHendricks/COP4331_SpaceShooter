@@ -3,7 +3,11 @@ using UnityEngine;
 public class Shipguns : MonoBehaviour
 {
 	public float damage = 10f;
-	public float range = 100f;
+	public float speed = 100f;
+	public float delayMax = 16f;
+	public float delay = 0;
+	
+	public GameObject bullet;
 
 	public Camera bulletCam;
 	public ParticleSystem muzzleFlash;
@@ -19,16 +23,21 @@ public class Shipguns : MonoBehaviour
 
 	public void Shoot()
 	{
-		RaycastHit hit;
-		muzzleFlash.Play();
-		if (Physics.Raycast(bulletCam.transform.position, bulletCam.transform.forward, out hit))
+		if(delay==0)
 		{
-			Debug.Log(hit.transform.name);
-			Enemy1 enemy = hit.transform.GetComponent<Enemy1>();
-			if (enemy != null)
-			{
-				enemy.TakeDamage(damage);
-			}
+			muzzleFlash.Play();
+			GameObject bulletInst = Instantiate(bullet,transform.position,transform.rotation);
+			Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),GetComponent<Collider>());
+			bulletInst.GetComponent<Bullet>().damage = damage;
+			bulletInst.GetComponent<Bullet>().speed = speed;
+			bulletInst.transform.rotation = transform.rotation;
+			bulletInst.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
+			bulletInst.GetComponent<Bullet>().player = gameObject;
+			delay = delayMax;
+		}
+		else
+		{
+			delay--;
 		}
 	}
 }
