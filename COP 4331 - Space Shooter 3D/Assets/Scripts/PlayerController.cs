@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 		rb.velocity = movement * speed;
 
-		rb.rotation = Quaternion.Euler(rb.velocity.z * (tilt / 5), 180, rb.velocity.x * -tilt);
+		rb.rotation = Quaternion.Euler(rb.velocity.z * (tilt / 5), 180, rb.velocity.x * tilt);
 	}
 
 	public float getScore()
