@@ -46,13 +46,4 @@ public class MovementNub : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoin
 		joyStickImg.rectTransform.anchoredPosition = Vector3.zero;
 	}
 
-	public float Horizontal()
-	{
-		return Input.GetAxis("Horizontal");
-	}
-
-	public float Vertical()
-	{
-		return Input.GetAxis("Vertical");
-	}
 }

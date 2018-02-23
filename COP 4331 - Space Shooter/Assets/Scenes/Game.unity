@@ -1978,6 +1978,14 @@ Prefab:
       propertyPath: scoretext
       value: 
       objectReference: {fileID: 948567459}
+    - target: {fileID: 4546693884474382, guid: b62f52c9242cc2045b0f6cc1a76284b9, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546693884474382, guid: b62f52c9242cc2045b0f6cc1a76284b9, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b62f52c9242cc2045b0f6cc1a76284b9, type: 2}
   m_IsPrefabParent: 0
@@ -3600,7 +3608,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 915ad02e64ab34bbc886402712f2fee0, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0

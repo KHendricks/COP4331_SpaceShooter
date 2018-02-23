@@ -11,7 +11,7 @@ public class ShootingNub : MonoBehaviour
     private Vector3 touchEnd;
 	private Vector3 offset;
 	private int touchIndex = -1;
-
+	public Vector3 inputVector;
     void Start ()
     {
         start = transform.position;
