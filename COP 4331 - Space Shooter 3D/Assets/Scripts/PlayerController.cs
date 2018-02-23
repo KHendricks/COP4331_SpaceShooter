@@ -10,13 +10,19 @@ public class PlayerController : MonoBehaviour
 	public Text scoreText;
 	public float tilt;
 	public float speed;
+	public GameObject endGoal;
 	public MovementNub movementNub;
 	public MovementNub shootRotateNub;
+	public GameObject playerShip;
 	private float posy;
+	private UnityEngine.AI.NavMeshAgent agent;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		posy = transform.position.y;
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+		
+        agent.destination = endGoal.transform.position;
 	}
 
 	// Update is called once per frame
@@ -41,30 +47,19 @@ public class PlayerController : MonoBehaviour
 			moveHorizontal = movementNub.inputVector.x;
 			moveVertical = movementNub.inputVector.z;
 		}
-<<<<<<< HEAD
-
-		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-		rb.velocity = movement * speed;
-
-		rb.rotation = Quaternion.Euler(rb.velocity.z * (tilt / 5), 180, rb.velocity.x * tilt);
-=======
 		if (shootRotateNub.inputVector != Vector3.zero)
 		{
-			GetComponent<Shipguns>().Shoot();
+			playerShip.GetComponent<Shipguns>().Shoot();
 			rotHorizontal = shootRotateNub.inputVector.x;
 			rotVertical = shootRotateNub.inputVector.z;
 		}
+		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + new Vector3(moveHorizontal,moveVertical,0)))
+		{
+			playerShip.transform.position = playerShip.transform.position + new Vector3(moveHorizontal,moveVertical,0);
+		}
+		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
+        
 		
-		Vector3 movement = transform.rotation * new Vector3(moveHorizontal/2, 0.0f, moveVertical);
-		
-		
-		transform.position = new Vector3(transform.position.x,posy,transform.position.z);
-		rb.AddForce(movement*speed);
-		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
-		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(rb.velocity.z * (tilt / 5), transform.eulerAngles.y, rb.velocity.x * -tilt),0.04f);
-		
-		
->>>>>>> test-candidate
 	}
 
 	public float getScore()

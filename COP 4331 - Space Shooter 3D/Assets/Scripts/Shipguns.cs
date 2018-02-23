@@ -31,8 +31,6 @@ public class Shipguns : MonoBehaviour
 			bulletInst.GetComponent<Bullet>().damage = damage;
 			bulletInst.GetComponent<Bullet>().speed = speed;
 			bulletInst.transform.rotation = transform.rotation;
-			bulletInst.GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity;
-			bulletInst.GetComponent<Bullet>().player = gameObject;
 			delay = delayMax;
 		}
 		else
