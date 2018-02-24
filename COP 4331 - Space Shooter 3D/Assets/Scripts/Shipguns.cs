@@ -6,7 +6,6 @@ public class Shipguns : MonoBehaviour
 	public float speed = 100f;
 	public float delayMax = 16f;
 	public float delay = 0;
-	
 	public GameObject bullet;
 
 	public Camera bulletCam;
@@ -31,6 +30,8 @@ public class Shipguns : MonoBehaviour
 			bulletInst.GetComponent<Bullet>().damage = damage;
 			bulletInst.GetComponent<Bullet>().speed = speed;
 			bulletInst.transform.rotation = transform.rotation;
+			
+			bulletInst.GetComponent<Bullet>().player= gameObject;
 			delay = delayMax;
 		}
 		else

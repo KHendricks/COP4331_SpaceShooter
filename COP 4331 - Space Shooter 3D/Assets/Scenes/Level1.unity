@@ -323,7 +323,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213191074}
   m_LocalRotation: {x: 0.17349775, y: 0.040989168, z: 0.0072274976, w: -0.98395437}
-  m_LocalPosition: {x: 7.358531, y: -204.36, z: -199.82678}
+  m_LocalPosition: {x: 7.422496, y: -204.36, z: -213.21785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -677,8 +677,8 @@ Camera:
   m_GameObject: {fileID: 511696515}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.7941176, g: 0.7941176, b: 0.7941176, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.22577855, g: 0.23410095, b: 0.2647059, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -712,7 +712,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 511696515}
   m_LocalRotation: {x: 0.17364818, y: -0.0000000037252903, z: 4.656613e-10, w: 0.9848078}
-  m_LocalPosition: {x: -0, y: 5.6249995, z: -14.285715}
+  m_LocalPosition: {x: -0.3, y: 5.6249995, z: -18.1}
   m_LocalScale: {x: 0.28571427, y: 0.26831126, z: 0.29719135}
   m_Children: []
   m_Father: {fileID: 424613121}
@@ -1056,8 +1056,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940406838}
-  m_LocalRotation: {x: 0.17349774, y: 0.040989168, z: 0.0072274967, w: -0.98395437}
-  m_LocalPosition: {x: 7.35853, y: -204.36, z: -199.82677}
+  m_LocalRotation: {x: 0.015309031, y: 0.9846895, z: 0.123541914, w: -0.12202334}
+  m_LocalPosition: {x: 1097.5364, y: -407.00903, z: 262.38483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1129,6 +1129,18 @@ Prefab:
     - target: {fileID: 100018, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300034, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300034, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300016, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
@@ -1278,7 +1290,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -212534738
+  randomSeed: 263690397
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4624,35 +4636,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &1671811935 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100018, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
-  m_PrefabInternal: {fileID: 1031140556}
---- !u!154 &1671811939
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671811935}
-  m_Material: {fileID: 0}
-  m_Enabled: 1
-  m_TerrainData: {fileID: 0}
-  m_EnableTreeColliders: 1
---- !u!54 &1671811940
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1671811935}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1751730074
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,7 +4964,7 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 21238145}
   tilt: 0.2
-  speed: 2000
+  speed: 2
   endGoal: {fileID: 1799401942}
   movementNub: {fileID: 432457706}
   shootRotateNub: {fileID: 753912006}
@@ -4993,7 +4976,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1911461403}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

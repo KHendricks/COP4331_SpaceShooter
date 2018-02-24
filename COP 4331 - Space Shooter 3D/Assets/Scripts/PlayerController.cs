@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update ()
+	void LateUpdate ()
  	{
 		PlayerMovement();
 		scoreText.text = "" + score;
@@ -53,9 +53,13 @@ public class PlayerController : MonoBehaviour
 			rotHorizontal = shootRotateNub.inputVector.x;
 			rotVertical = shootRotateNub.inputVector.z;
 		}
-		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + new Vector3(moveHorizontal,moveVertical,0)))
+		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.right*moveHorizontal*speed*2))
 		{
-			playerShip.transform.position = playerShip.transform.position + new Vector3(moveHorizontal,moveVertical,0);
+			playerShip.transform.position = playerShip.transform.position + transform.right*moveHorizontal*speed;
+		}
+		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.up*moveVertical*speed*2))
+		{
+			playerShip.transform.position = playerShip.transform.position + transform.up*moveVertical*speed;
 		}
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
         
