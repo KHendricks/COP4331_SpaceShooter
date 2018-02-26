@@ -19,7 +19,7 @@ public class Enemy1 : MonoBehaviour
 
 		if (health <= 0f)
 		{
-			GameController.instance.AddToScore(100);
+			player.GetComponent<PlayerController>().addToScore(100);
 			Death();
 		}
 	}

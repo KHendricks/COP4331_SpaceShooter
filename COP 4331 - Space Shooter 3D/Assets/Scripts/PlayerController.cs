@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	//public int score = 0;
+	public int score = 0;
 	private Rigidbody rb;
 	public Text scoreText;
 	public float tilt;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 	void LateUpdate ()
  	{
 		PlayerMovement();
-		scoreText.text = "" + GameController.instance.GetScore();
+		scoreText.text = "" + score;
 	}
 
 	void PlayerMovement()
@@ -66,4 +66,13 @@ public class PlayerController : MonoBehaviour
 		
 	}
 
+	public float getScore()
+	{
+		return score;
+	}
+
+	public void addToScore(int val)
+	{
+		score += val;
+	}
 }
