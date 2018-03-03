@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 	public GameObject playerShip;
 	private float posy;
 	private UnityEngine.AI.NavMeshAgent agent;
+
+	public Image crosshair;
+	public Camera mainCam;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -25,7 +29,6 @@ public class PlayerController : MonoBehaviour
         agent.destination = endGoal.transform.position;
 	}
 
-	// Update is called once per frame
 	void LateUpdate ()
  	{
 		PlayerMovement();
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
 			playerShip.GetComponent<Shipguns>().Shoot();
 			rotHorizontal = shootRotateNub.inputVector.x;
 			rotVertical = shootRotateNub.inputVector.z;
+
+			crosshair.transform.position = mainCam.WorldToScreenPoint(playerShip.GetComponent<Shipguns>().bulletInst.GetComponent<Bullet>().shootDir.GetPoint(400));
 		}
 		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.right*moveHorizontal*speed*2))
 		{

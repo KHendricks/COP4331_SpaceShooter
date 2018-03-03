@@ -7,6 +7,7 @@ public class Shipguns : MonoBehaviour
 	public float delayMax = 16f;
 	public float delay = 0;
 	public GameObject bullet;
+	public GameObject bulletInst;
 
 	public Camera bulletCam;
 	public ParticleSystem muzzleFlash;
@@ -25,7 +26,7 @@ public class Shipguns : MonoBehaviour
 		if(delay==0)
 		{
 			muzzleFlash.Play();
-			GameObject bulletInst = Instantiate(bullet,transform.position,transform.rotation);
+			bulletInst = Instantiate(bullet,transform.position,transform.rotation);
 			Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),GetComponent<Collider>());
 			bulletInst.GetComponent<Bullet>().damage = damage;
 			bulletInst.GetComponent<Bullet>().speed = speed;

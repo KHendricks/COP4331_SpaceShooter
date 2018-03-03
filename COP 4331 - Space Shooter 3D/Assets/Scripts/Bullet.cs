@@ -8,11 +8,16 @@ public class Bullet : MonoBehaviour
 	private Vector3 forward;
 	private int timer = 1500;
 	private Rigidbody rb;
+
+	public Ray shootDir;
+	
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		rb.AddForce(transform.forward*speed*3,ForceMode.Impulse);
 		forward = transform.forward;
+
+		shootDir = new Ray(transform.position, transform.forward);
 	}
 	
 	void Update ()
