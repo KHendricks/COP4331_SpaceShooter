@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		
-        //agent.destination = endGoal.transform.position;
+        agent.destination = endGoal.transform.position;
 	}
 
 	void LateUpdate ()
