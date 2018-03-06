@@ -12,7 +12,6 @@ public class Shipguns : MonoBehaviour
 	public Camera bulletCam;
 	public ParticleSystem muzzleFlash;
 
-	// Update is called once per frame
 	void Update ()
 	{
 		if (Input.GetKeyDown("space"))

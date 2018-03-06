@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
 	
 	void Update ()
     {
-	
 		rb.AddForce(forward*speed*3,ForceMode.Impulse);
 
 		transform.rotation = Quaternion.Euler(rb.velocity);

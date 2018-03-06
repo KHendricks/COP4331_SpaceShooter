@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
 	public Image crosshair;
 	public Camera mainCam;
+	private Vector3 dir;
+	private float sensitivity = 300;
 
 	void Start()
 	{
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		
-        agent.destination = endGoal.transform.position;
+        //agent.destination = endGoal.transform.position;
 	}
 
 	void LateUpdate ()
@@ -50,14 +52,18 @@ public class PlayerController : MonoBehaviour
 			moveHorizontal = movementNub.inputVector.x;
 			moveVertical = movementNub.inputVector.z;
 		}
+		// Shooting nub
 		if (shootRotateNub.inputVector != Vector3.zero)
 		{
 			playerShip.GetComponent<Shipguns>().Shoot();
 			rotHorizontal = shootRotateNub.inputVector.x;
 			rotVertical = shootRotateNub.inputVector.z;
 
-			crosshair.transform.position = mainCam.WorldToScreenPoint(playerShip.GetComponent<Shipguns>().bulletInst.GetComponent<Bullet>().shootDir.GetPoint(400));
+			// Move the corsshair where the player is shooting
+			dir = mainCam.WorldToScreenPoint(playerShip.GetComponent<Shipguns>().bulletInst.GetComponent<Bullet>().shootDir.GetPoint(400));
+			crosshair.transform.position = Vector3.MoveTowards(crosshair.transform.position, dir, sensitivity * Time.deltaTime);
 		}
+
 		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.right*moveHorizontal*speed*2))
 		{
 			playerShip.transform.position = playerShip.transform.position + transform.right*moveHorizontal*speed;
@@ -67,8 +73,6 @@ public class PlayerController : MonoBehaviour
 			playerShip.transform.position = playerShip.transform.position + transform.up*moveVertical*speed;
 		}
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
-        
-		
 	}
 
 }
