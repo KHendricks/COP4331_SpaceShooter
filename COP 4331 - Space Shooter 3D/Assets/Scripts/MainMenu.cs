@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 
 	void Start()
 	{
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		PlayGamesPlatform.Activate();
 		CheckConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
 	}

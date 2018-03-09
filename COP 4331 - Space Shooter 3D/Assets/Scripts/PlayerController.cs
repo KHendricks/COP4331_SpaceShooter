@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 	public Text scoreText;
 	public float tilt;
 	public float speed;
-	public GameObject endGoal;
+	private GameObject endGoal;
 	public MovementNub movementNub;
 	public MovementNub shootRotateNub;
 	public GameObject playerShip;
@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		
+		endGoal = GameObject.Find("EndPoint");
+		Debug.Log(endGoal.transform.position);
         agent.destination = endGoal.transform.position;
 	}
 
