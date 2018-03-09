@@ -7,30 +7,67 @@ using UnityEngine.SocialPlatforms;
 
 public class MainMenu : MonoBehaviour
 {
-	public GUISkin guiSkin;
+	public GameObject connectedMenu, disconnectedMenu;
 
-	private bool showLobbyDialogue;
-	private string lobbyMessage;
+	void Start()
+	{
+		PlayGamesPlatform.Activate();
+		CheckConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
+	}
 
 	public void PlayGame()
 	{
 		SceneManager.LoadScene("Level1");
 	}
 
-	public void SetLobbyStatusMessage(string message)
+	// function to check connection for play services
+	private void CheckConnectionResponse(bool status)
 	{
-		lobbyMessage = message;
+		// User is connected
+		if (status)
+		{
+			Debug.Log("User is signed in");
+			disconnectedMenu.SetActive(false);
+			connectedMenu.SetActive(true);
+		}
+		else
+		{
+			Debug.Log("Not signed in");
+			disconnectedMenu.SetActive(true);
+			connectedMenu.SetActive(false);
+		}
 	}
 
-	public void HideLobby()
+	public void OnLoginClick()
 	{
-		lobbyMessage = "";
-		showLobbyDialogue = false;
+		PlayGamesPlatform.Instance.localUser.Authenticate((bool status) =>
+		{
+			CheckConnectionResponse(status);
+		});
 	}
 
-	void OnGUI()
+	public void OnMultiplayerClick()
 	{
-		Debug.Log("Loading multiplayer game here!");
+		SceneManager.LoadScene("MultiplayerLevel");
 
+	}
+
+	public void SignOut()
+	{
+		PlayGamesPlatform.Instance.SignOut();
+		CheckConnectionResponse(false);
+	}
+
+	public bool IsAuthenticated()
+	{
+		return PlayGamesPlatform.Instance.localUser.authenticated;
+	}
+
+	public void OnLeaderboardClick()
+	{
+		if (Social.localUser.authenticated)
+		{
+			Social.ShowLeaderboardUI();
+		}
 	}
 }

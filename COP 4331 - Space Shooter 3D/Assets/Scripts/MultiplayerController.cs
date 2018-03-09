@@ -1,116 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+// This script will handle the logging in of the user to their google play
+// acount from the main menu and will allow the user to connect to the
+// multiplayer service.
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using GooglePlayGames;
-using UnityEngine.SocialPlatforms;
-using GooglePlayGames.BasicApi.Multiplayer;
+using UnityEngine.UI;
 
-public class MultiplayerController : MonoBehaviour, RealTimeMultiplayerListener
+public class MultiplayerController : Photon.MonoBehaviour
 {
-	public GameObject connectedMenu, disconnectedMenu;
-	public MainMenu mainMenuScript;
+	public Text connectText;
+	private bool connectedFlagText = false;
+	[SerializeField] private GameObject player;
+	[SerializeField] private GameObject lobbyCamera;
+	[SerializeField] private Transform spawnPoint;
 
-	private uint minimumOpponents = 1;
-	private uint maximumOpponents = 1;
-	private uint gameVariation = 0;
-
-	void Awake ()
+	private void Start()
 	{
-		// Activate the google play api on startup
-		PlayGamesPlatform.Activate();
-		CheckConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
+		PhotonNetwork.ConnectUsingSettings("0.1");
 	}
 
-	// function to check connection for play services
-	private void CheckConnectionResponse(bool status)
+	private void Update()
 	{
-		// User is connected
-		if (status)
-		{
-			disconnectedMenu.SetActive(false);
-			connectedMenu.SetActive(true);
-		}
-		else
-		{
-			disconnectedMenu.SetActive(true);
-			connectedMenu.SetActive(false);
-		}
+		connectText.text = PhotonNetwork.connectionStateDetailed.ToString();
 	}
 
-	public void OnLoginClick()
+	public virtual void OnJoinedLobby()
 	{
-		Social.localUser.Authenticate((bool status) =>
-		{
-			CheckConnectionResponse(status);
-		});
+		Debug.Log("We have joined the Lobby!");
+
+		// Join room if it exists or create one
+		PhotonNetwork.JoinOrCreateRoom("New", null, null);
 	}
 
-	public void OnLogoutClick()
+	// Can spawn the player here
+	public virtual void OnJoinedRoom()
 	{
-		PlayGamesPlatform.Instance.SignOut();
-		CheckConnectionResponse(false);
-	}
-
-	public void OnLeaderboardClick()
-	{
-		if (Social.localUser.authenticated)
-		{
-			Social.ShowLeaderboardUI();
-		}
-	}
-
-	private void ShowMPStatus(string message)
-	{
-		Debug.Log(message);
-		if (mainMenuScript != null)
-		{
-			mainMenuScript.SetLobbyStatusMessage(message);
-		}
-	}
-
-	public void OnRoomSetupProgress(float percent)
-	{
-		ShowMPStatus("We are " + percent + "% done with setup");
-	}
-
-	public void OnRoomConnected(bool success)
-	{
-		if (success)
-		{
-			ShowMPStatus("We are connected to the room! I would probably start our game now.");
-		}
-		else
-		{
-			ShowMPStatus("Uh-oh. Encountered some error connecting to the room.");
-		}
-	}
-
-	public void OnLeftRoom()
-	{
-		ShowMPStatus("We have left the building!");
-	}
-
-	public void OnParticipantLeft(Participant participant)
-	{
-
-	}
-
-	public void OnPeersConnected(string[] participantIds)
-	{
-		foreach (string participantID in participantIds)
-		{
-			ShowMPStatus("Player " + participantID + " has joined.");
-		}
-	}
-
-	public void OnPeersDisconnected(string[] participantIds)
-	{
-
-	}
-
-	public void OnRealTimeMessageReceived(bool isReliable, string senderId, byte[] data)
-	{
-
+		PhotonNetwork.Instantiate(player.name, spawnPoint.position, spawnPoint.rotation, 0);
+		lobbyCamera.SetActive(false);
 	}
 }
