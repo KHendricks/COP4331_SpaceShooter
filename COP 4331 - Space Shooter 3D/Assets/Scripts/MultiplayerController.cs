@@ -13,10 +13,14 @@ public class MultiplayerController : Photon.MonoBehaviour
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject lobbyCamera;
 	[SerializeField] private Transform spawnPoint;
+	private GameObject waitingCanvas;
+	private int playerCount = 0;
 
 	private void Start()
 	{
 		PhotonNetwork.ConnectUsingSettings("0.1");
+		waitingCanvas = GameObject.Find("WaitingScreen");
+		WaitingScreen();
 	}
 
 	private void Update()
@@ -36,6 +40,26 @@ public class MultiplayerController : Photon.MonoBehaviour
 	public virtual void OnJoinedRoom()
 	{
 		PhotonNetwork.Instantiate(player.name, spawnPoint.position, spawnPoint.rotation, 0);
+		playerCount++;
+		Debug.Log(playerCount);
+		if (playerCount > 1)
+		{
+			PlayGame();
+		}
+
 		lobbyCamera.SetActive(false);
+	}
+
+	public void PlayGame()
+	{
+		waitingCanvas.SetActive(false);
+		Time.timeScale = 1;
+	}
+
+	// Screen will be toggled on and game will be considered paused
+	public void WaitingScreen()
+	{
+		waitingCanvas.SetActive(true);
+		Time.timeScale = 0;
 	}
 }
