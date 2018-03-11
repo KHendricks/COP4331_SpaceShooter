@@ -8,11 +8,13 @@ public class GameController : MonoBehaviour
 {
 	public static GameController instance;
 	private List<string> levelNames = new List<string>(); // Store level names so we can access them all easily
-	public string upgradeSceneName = "Upgrade Screen";
+	public string upgradeSceneName = "UpgradeScreen";
 	public int score = 0;
 
 	void Awake()
 	{
+		DontDestroyOnLoad(transform.gameObject);
+		
 		if (instance == null)
 		{
 			instance = this;
