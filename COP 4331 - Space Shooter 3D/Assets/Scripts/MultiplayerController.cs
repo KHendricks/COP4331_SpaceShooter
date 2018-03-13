@@ -10,22 +10,37 @@ public class MultiplayerController : Photon.MonoBehaviour
 {
 	public Text connectText;
 	private bool connectedFlagText = false;
-	[SerializeField] private GameObject player;
-	[SerializeField] private GameObject lobbyCamera;
-	[SerializeField] private Transform spawnPoint;
+	public GameObject player;
+	public GameObject lobbyCamera;
+	public Transform spawnPoint;
 	private GameObject waitingCanvas;
 	private int playerCount = 0;
+	private bool startedFlag = false;
+	public GameObject connectionLostCanvas;
 
 	private void Start()
 	{
 		PhotonNetwork.ConnectUsingSettings("0.1");
 		waitingCanvas = GameObject.Find("WaitingScreen");
 		WaitingScreen();
+		connectionLostCanvas.SetActive(false);
 	}
 
 	private void Update()
 	{
 		connectText.text = PhotonNetwork.connectionStateDetailed.ToString();
+		playerCount = PhotonNetwork.playerList.Length;
+
+		if (playerCount > 1)
+		{
+			startedFlag = true;
+			PlayGame();
+		}
+
+		if (playerCount < 2 && startedFlag)
+		{
+			ConnectionLost();
+		}
 	}
 
 	public virtual void OnJoinedLobby()
@@ -40,13 +55,6 @@ public class MultiplayerController : Photon.MonoBehaviour
 	public virtual void OnJoinedRoom()
 	{
 		PhotonNetwork.Instantiate(player.name, spawnPoint.position, spawnPoint.rotation, 0);
-		playerCount++;
-		Debug.Log(playerCount);
-		if (playerCount > 1)
-		{
-			PlayGame();
-		}
-
 		lobbyCamera.SetActive(false);
 	}
 
@@ -54,6 +62,7 @@ public class MultiplayerController : Photon.MonoBehaviour
 	{
 		waitingCanvas.SetActive(false);
 		Time.timeScale = 1;
+		connectText.text = "";
 	}
 
 	// Screen will be toggled on and game will be considered paused
@@ -61,5 +70,33 @@ public class MultiplayerController : Photon.MonoBehaviour
 	{
 		waitingCanvas.SetActive(true);
 		Time.timeScale = 0;
+	}
+
+	public void ConnectionLost()
+	{
+		connectionLostCanvas.SetActive(true);
+	}
+
+	public void ReturnToMainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	// Syncs players movements
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
+		if (stream.isWriting)
+		{
+			// We own this player: send the others our data
+			stream.SendNext(transform.position); //position of the character
+			stream.SendNext(transform.rotation); //rotation of the character
+
+		}
+		else
+		{
+			// Network player, receive data
+			Vector3 syncPosition = (Vector3)stream.ReceiveNext();
+			Quaternion syncRotation = (Quaternion)stream.ReceiveNext();
+		}
 	}
 }
