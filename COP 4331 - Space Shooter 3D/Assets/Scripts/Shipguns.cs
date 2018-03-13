@@ -33,6 +33,9 @@ public class Shipguns : MonoBehaviour
 			
 			bulletInst.GetComponent<Bullet>().player= gameObject;
 			delay = delayMax;
+
+			// Added tag to the bullet
+			bulletInst.gameObject.tag = "Bullet";
 		}
 		else
 		{
