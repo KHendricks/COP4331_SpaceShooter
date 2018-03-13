@@ -24,6 +24,7 @@ public class MultiplayerController : Photon.MonoBehaviour
 		waitingCanvas = GameObject.Find("WaitingScreen");
 		WaitingScreen();
 		connectionLostCanvas.SetActive(false);
+		waitingCanvas.SetActive(false);
 	}
 
 	private void Update()
@@ -56,6 +57,9 @@ public class MultiplayerController : Photon.MonoBehaviour
 	{
 		PhotonNetwork.Instantiate(player.name, spawnPoint.position, spawnPoint.rotation, 0);
 		lobbyCamera.SetActive(false);
+		waitingCanvas.SetActive(true);
+		connectText.text = "Connected";
+
 	}
 
 	public void PlayGame()
