@@ -2,6 +2,7 @@
 // acount from the main menu and will allow the user to connect to the
 // multiplayer service.
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -64,6 +65,7 @@ public class MultiplayerController : Photon.MonoBehaviour
 
 	public void PlayGame()
 	{
+		StartCoroutine(WaitTime());
 		waitingCanvas.SetActive(false);
 		Time.timeScale = 1;
 		connectText.text = "";
@@ -86,21 +88,9 @@ public class MultiplayerController : Photon.MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
-	// Syncs players movements
-	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	IEnumerator WaitTime()
 	{
-		if (stream.isWriting)
-		{
-			// We own this player: send the others our data
-			stream.SendNext(transform.position); //position of the character
-			stream.SendNext(transform.rotation); //rotation of the character
+		yield return new WaitForSeconds(3);
 
-		}
-		else
-		{
-			// Network player, receive data
-			Vector3 syncPosition = (Vector3)stream.ReceiveNext();
-			Quaternion syncRotation = (Quaternion)stream.ReceiveNext();
-		}
 	}
 }
