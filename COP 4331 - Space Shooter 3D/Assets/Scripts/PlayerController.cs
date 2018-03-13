@@ -21,9 +21,13 @@ public class PlayerController : MonoBehaviour
 	public Camera mainCam;
 	private Vector3 dir;
 	private float sensitivity = 300;
+	public GameController gameController;
+
+	public int health;
 
 	void Start()
 	{
+		health = 100;
 		rb = GetComponent<Rigidbody>();
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -75,5 +79,4 @@ public class PlayerController : MonoBehaviour
 		}
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
 	}
-
 }
