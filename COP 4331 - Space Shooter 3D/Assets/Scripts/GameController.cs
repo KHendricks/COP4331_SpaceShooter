@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
 	public static GameController instance;
 	private List<string> levelNames = new List<string>(); // Store level names so we can access them all easily
 	public string upgradeSceneName = "UpgradeScreen";
-	public int score = 0;
+	private int score = 0;
+    private int playerHealth = 100;
 
 	void Awake()
 	{
@@ -27,7 +28,18 @@ public class GameController : MonoBehaviour
 		InitializeLevelNames();
 	}
 
-	public void AddToScore(int val)
+    // This will be used to store all the level names
+    private void InitializeLevelNames()
+    {
+        levelNames.Add("Next Level Name");
+    }
+
+    public void NextLevel(string nextLevel)
+    {
+        SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+    }
+
+    public void AddToScore(int val)
 	{
 		score += val;
 	}
@@ -37,14 +49,13 @@ public class GameController : MonoBehaviour
 		return score;
 	}
 
-	// This will be used to store all the level names
-	private void InitializeLevelNames()
-	{	
-		levelNames.Add("Next Level Name");
-	}
+    public void ChangeHealth(int val)
+    {
+        playerHealth += val;
+    }
 
-	public void NextLevel(string nextLevel)
-	{
-		SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
-	}
+    public float GetHealth()
+    {
+        return playerHealth;
+    }
 }

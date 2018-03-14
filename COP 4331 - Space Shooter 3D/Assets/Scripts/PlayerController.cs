@@ -21,13 +21,9 @@ public class PlayerController : MonoBehaviour
 	public Camera mainCam;
 	private Vector3 dir;
 	private float sensitivity = 300;
-	public GameController gameController;
-
-	public int health;
 
 	void Start()
 	{
-		health = 100;
 		rb = GetComponent<Rigidbody>();
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
