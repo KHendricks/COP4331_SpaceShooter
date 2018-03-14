@@ -11,6 +11,7 @@ public class Shipguns : MonoBehaviour
 
 	public Camera bulletCam;
 	public ParticleSystem muzzleFlash;
+	public AudioSource bulletSound;
 
 	void Update ()
 	{
@@ -24,6 +25,7 @@ public class Shipguns : MonoBehaviour
 	{
 		if (delay <= 0)
 		{
+			bulletSound.Play();
 			muzzleFlash.Play();
 			bulletInst = Instantiate(bullet,transform.position,transform.rotation);
 			Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(),GetComponent<Collider>());

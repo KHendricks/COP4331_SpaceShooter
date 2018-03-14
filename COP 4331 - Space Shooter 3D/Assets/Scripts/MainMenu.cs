@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 
 	public void PlayGame()
 	{
+		GameController.instance.ChangeHealth(100);
 		SceneManager.LoadScene("Level1");
 	}
 

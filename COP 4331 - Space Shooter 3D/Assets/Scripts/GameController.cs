@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         playerHealth += val;
     }
 
-    public float GetHealth()
+    public int GetHealth()
     {
         return playerHealth;
     }
