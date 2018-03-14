@@ -22,7 +22,7 @@ public class Shipguns : MonoBehaviour
 
 	public void Shoot()
 	{
-		if(delay==0)
+		if (delay <= 0)
 		{
 			muzzleFlash.Play();
 			bulletInst = Instantiate(bullet,transform.position,transform.rotation);

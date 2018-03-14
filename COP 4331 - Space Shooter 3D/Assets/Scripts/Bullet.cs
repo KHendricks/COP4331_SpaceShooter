@@ -8,9 +8,9 @@ public class Bullet : MonoBehaviour
 	private Vector3 forward;
 	private int timer = 1500;
 	private Rigidbody rb;
-
 	public Ray shootDir;
-	
+	public float deathTime = 4f;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour
 		forward = transform.forward;
 
 		shootDir = new Ray(transform.position, transform.forward);
+
+		Destroy(gameObject, deathTime);
 	}
 	
 	void Update ()
