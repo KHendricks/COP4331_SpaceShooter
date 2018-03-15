@@ -189,3 +189,5 @@ MonoBehaviour:
   scoreOnDeath: 100
   bulletDamage: 0
   enemy: {fileID: 1895949182012834}
+  explosionEffect: {fileID: 1729202481038840, guid: 0481e0e13b296a04cbb6f2500f89c0d6,
+    type: 2}

@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 	public int bulletDamage;
 	public GameObject enemy;
 
+    public GameObject explosionEffect;
+
 	private void Update()
 	{
 		Death();
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
 	{
 		if (health <= 0)
 		{
+            Instantiate(explosionEffect, transform.position, transform.rotation);
 			Debug.Log("DEAD");
 			Destroy(enemy);
 			GameController.instance.AddToScore(scoreOnDeath);
