@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	private float sensitivity = 300;
 
     public Button damageAmpButton;
+    public Text damageAmpText;
     private double damage = 10;
 
 	void Start()
@@ -36,7 +37,8 @@ public class PlayerController : MonoBehaviour
 
         if (GameController.instance.damageAmpPurch)
         {
-            damageAmpButton.enabled = true;
+            damageAmpButton.interactable = true;
+            damageAmpText.text = "DMG";
 
             damageAmpButton.onClick.AddListener(delegate ()
             {
@@ -92,7 +94,8 @@ public class PlayerController : MonoBehaviour
     // Increases damage by 1.5% for 1 minute
     IEnumerator DamageAmp()
     {
-        damageAmpButton.enabled = false;
+        damageAmpButton.interactable = false;
+        damageAmpText.text = "";
         GameController.instance.damageAmpPurch = false;
         damage = damage * 1.5;
         yield return new WaitForSecondsRealtime(60);

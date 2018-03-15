@@ -76,6 +76,7 @@ public class UpgradeScreen : MonoBehaviour
         {
             GameController.instance.damageAmpPurch = true;
             GameController.instance.AddToScore(-damageCost);
+            scoreText.text = "SCORE\n" + GameController.instance.GetScore();
 
             ChangeColor(damageAmpButton, Color.red);
         }
