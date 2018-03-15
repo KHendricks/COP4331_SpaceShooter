@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
 	private int score = 0;
     private int playerHealth = 100;
     public bool damageAmpPurch = false;
+    public bool isPlayerDead = false;
 
 	void Awake()
 	{
@@ -28,6 +29,27 @@ public class GameController : MonoBehaviour
 
 		InitializeLevelNames();
 	}
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoaded;
+    }
+
+    void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(isPlayerDead)
+        {
+            playerHealth = 100;
+            score = 0;
+            damageAmpPurch = false;
+            isPlayerDead = false;
+        }
+    }
 
     // This will be used to store all the level names
     private void InitializeLevelNames()

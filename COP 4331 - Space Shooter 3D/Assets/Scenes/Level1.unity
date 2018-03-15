@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeSceneName: Upgrade Screen
   damageAmpPurch: 0
+  isPlayerDead: 0
 --- !u!4 &183026100
 Transform:
   m_ObjectHideFlags: 0
@@ -613,6 +614,46 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371589870152708, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: damageAmpText
+      value: 
+      objectReference: {fileID: 1179287976}
+    - target: {fileID: 1639177762580826, guid: 007a6741a949a204da40e62dad807b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 224157465515403860, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 224157465515403860, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 9985a5dc795c04f9a8265dd89c8cc5c3,
+        type: 3}
+    - target: {fileID: 114763332307785452, guid: 007a6741a949a204da40e62dad807b3e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 007a6741a949a204da40e62dad807b3e, type: 2}
@@ -1077,8 +1118,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940406838}
-  m_LocalRotation: {x: -0.3143393, y: 0.017643414, z: 0.005843041, w: 0.9491288}
-  m_LocalPosition: {x: 722.7428, y: -1071.9048, z: -725.9426}
+  m_LocalRotation: {x: 0.17349777, y: 0.040989168, z: 0.0072275004, w: -0.98395437}
+  m_LocalPosition: {x: 10.89643, y: -228.06, z: -245.25644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1203,7 +1244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.63
+      value: -20.27
       objectReference: {fileID: 0}
     - target: {fileID: 2300034, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
       propertyPath: m_DynamicOccludee
@@ -1212,6 +1253,14 @@ Prefab:
     - target: {fileID: 2300034, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.82
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2300016, guid: 19b23689c9418420b8cb630ac9367418, type: 3}
@@ -1310,6 +1359,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 963ef11c561e4ca49886baa07c1f9b5e, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1179287976 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
+    type: 2}
+  m_PrefabInternal: {fileID: 447547254}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1251262911
 Prefab:
   m_ObjectHideFlags: 0

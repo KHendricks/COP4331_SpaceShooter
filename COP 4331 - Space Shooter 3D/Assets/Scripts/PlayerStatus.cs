@@ -29,6 +29,7 @@ public class PlayerStatus : MonoBehaviour
 			Debug.Log("DEAD");
 			Destroy(gameObject);
 			PostScore();
+            GameController.instance.isPlayerDead = true;
 			SceneManager.LoadScene("MainMenu");
 		}
 	}
