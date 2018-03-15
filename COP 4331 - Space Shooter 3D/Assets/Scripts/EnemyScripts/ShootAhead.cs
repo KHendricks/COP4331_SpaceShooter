@@ -4,7 +4,7 @@ using UnityEngine;
 
 // This script will have the enemy shoot straight ahead every few seconds
 
-public class ShootAhead : MonoBehaviour 
+public class ShootAhead : MonoBehaviour
 {
 	// Same values for default player stats
 	public float damage = 10f;
@@ -13,15 +13,20 @@ public class ShootAhead : MonoBehaviour
 
 	public GameObject bullet;
 	public GameObject bulletInst;
+	public int shotType = 0;
 
 	// Use this for initialization
-	void Start () 
+	void Start()
 	{
 		// Call shoot every one second
-		InvokeRepeating("Shoot", 0, delay);
+		if (shotType == 0)
+			InvokeRepeating("NormalShoot", 0, delay);
+		else if (shotType == 1)
+			InvokeRepeating("HomingShoot", 0, delay);
+
 	}
-	
-	private void Shoot()
+
+	private void NormalShoot()
 	{
 		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
 		Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
@@ -29,6 +34,14 @@ public class ShootAhead : MonoBehaviour
 		bulletInst.GetComponent<Bullet>().speed = speed;
 		bulletInst.transform.rotation = transform.rotation;
 		bulletInst.GetComponent<Bullet>().player = gameObject;
+
+		// Added tag to the bullet
+		bulletInst.gameObject.tag = "EnemyBullet";
+	}
+
+	private void HomingShoot()
+	{
+		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
 
 		// Added tag to the bullet
 		bulletInst.gameObject.tag = "EnemyBullet";
