@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 	public string upgradeSceneName = "UpgradeScreen";
 	private int score = 0;
     private int playerHealth = 100;
+    public bool damageAmpPurch = false;
 
 	void Awake()
 	{

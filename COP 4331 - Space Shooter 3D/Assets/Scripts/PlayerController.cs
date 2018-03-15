@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 	private Vector3 dir;
 	private float sensitivity = 300;
 
+    public Button damageAmpButton;
+    private double damage = 10;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -30,6 +33,16 @@ public class PlayerController : MonoBehaviour
 		endGoal = GameObject.Find("EndPoint");
 		Debug.Log(endGoal.transform.position);
         agent.destination = endGoal.transform.position;
+
+        if (GameController.instance.damageAmpPurch)
+        {
+            damageAmpButton.enabled = true;
+
+            damageAmpButton.onClick.AddListener(delegate ()
+            {
+                StartCoroutine(DamageAmp());
+            });
+        }
 	}
 
 	void LateUpdate ()
@@ -75,4 +88,15 @@ public class PlayerController : MonoBehaviour
 		}
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
 	}
+
+    // Increases damage by 1.5% for 1 minute
+    IEnumerator DamageAmp()
+    {
+        damageAmpButton.enabled = false;
+        GameController.instance.damageAmpPurch = false;
+        damage = damage * 1.5;
+        yield return new WaitForSecondsRealtime(60);
+        Debug.Log("ended");
+        damage = damage / 1.5;
+    }
 }
