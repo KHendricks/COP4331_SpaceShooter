@@ -19,6 +19,11 @@ public class Healthbar : MonoBehaviour
 	void Update () 
 	{
 		health = GameController.instance.GetHealth();
+
+		// Fixes health bar display for when health goes into the negatives
+		if (health <= 0)
+			health = 0;
+
 		slider.value = Mathf.Clamp01((float)(health) / (float)(maxHealth));
 		healthAmt.text = health + " / " + maxHealth;
 	}

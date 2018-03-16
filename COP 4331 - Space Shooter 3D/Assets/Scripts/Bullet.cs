@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
     {
 		rb.AddForce(forward*speed*3,ForceMode.Impulse);
 
-		transform.rotation = Quaternion.Euler(rb.velocity);
+		//transform.rotation = Quaternion.Euler(rb.velocity);
 		if(timer==0)
 		{
 			Destroy(gameObject);
