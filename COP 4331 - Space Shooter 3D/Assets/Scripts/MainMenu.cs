@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using GooglePlayGames;
 using UnityEngine.SocialPlatforms;
@@ -8,18 +9,35 @@ using UnityEngine.SocialPlatforms;
 public class MainMenu : MonoBehaviour
 {
 	public GameObject connectedMenu, disconnectedMenu;
+	public GameObject ContinueBtn;
 
 	void Start()
 	{
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		PlayGamesPlatform.Activate();
 		CheckConnectionResponse(PlayGamesPlatform.Instance.localUser.authenticated);
+
+		if (PlayerPrefs.GetInt("Player Health") <= 0)
+			ContinueBtn.SetActive(false);
+		else
+			ContinueBtn.SetActive(true);
 	}
 
-	public void PlayGame()
+	public void NewGame()
 	{
-		//GameController.instance.ChangeHealth(100);
+		PlayerPrefs.DeleteAll();
+		PlayerPrefs.SetInt("Player Level", 1);
+
+		// This should be set "maxhealth" from the game controller not a static value
+		PlayerPrefs.SetInt("Player Health", 100);
+		PlayerPrefs.SetInt("Player Score", 0);
 		SceneManager.LoadScene("Level1");
+	}
+
+	public void ContinueGame()
+	{
+		if (PlayerPrefs.GetInt("Player Health") >= 0)
+			SceneManager.LoadScene(PlayerPrefs.GetInt("Player Level"));
 	}
 
 	// function to check connection for play services

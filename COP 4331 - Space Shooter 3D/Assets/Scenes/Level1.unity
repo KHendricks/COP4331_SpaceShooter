@@ -284,6 +284,7 @@ MonoBehaviour:
   upgradeSceneName: Upgrade Screen
   damageAmpPurch: 0
   isPlayerDead: 0
+  levelIndex: 1
 --- !u!4 &183026100
 Transform:
   m_ObjectHideFlags: 0
@@ -364,8 +365,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213191074}
-  m_LocalRotation: {x: -0.038411185, y: 0.92924875, z: 0.35328987, w: 0.10103303}
-  m_LocalPosition: {x: -202.54492, y: -994.2685, z: 1654.0022}
+  m_LocalRotation: {x: 0.17349777, y: 0.040989168, z: 0.0072275004, w: -0.98395437}
+  m_LocalPosition: {x: 10.89643, y: -228.06, z: -245.25644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -613,61 +614,6 @@ Prefab:
     - target: {fileID: 224305614153358400, guid: 007a6741a949a204da40e62dad807b3e,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114371589870152708, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: damageAmpText
-      value: 
-      objectReference: {fileID: 1179287976}
-    - target: {fileID: 1639177762580826, guid: 007a6741a949a204da40e62dad807b3e, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 224157465515403860, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 224157465515403860, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 9985a5dc795c04f9a8265dd89c8cc5c3,
-        type: 3}
-    - target: {fileID: 114763332307785452, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114685275143585830, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114685275143585830, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114685275143585830, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1370,12 +1316,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 963ef11c561e4ca49886baa07c1f9b5e, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1179287976 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114653649186758130, guid: 007a6741a949a204da40e62dad807b3e,
-    type: 2}
-  m_PrefabInternal: {fileID: 447547254}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1251262911
 Prefab:
   m_ObjectHideFlags: 0
