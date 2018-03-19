@@ -11,8 +11,10 @@ public class GameController : MonoBehaviour
 	public string upgradeSceneName = "UpgradeScreen";
 	private int score = 0;
     private int playerHealth = 100;
+	private int maxHealth = 100;
     public bool damageAmpPurch = false;
     public bool isPlayerDead = false;
+	public int levelIndex = 1;
 
 	void Awake()
 	{
@@ -29,8 +31,23 @@ public class GameController : MonoBehaviour
 
 		InitializeLevelNames();
 	}
+	
+	
+	void Start()
+	{
+		levelIndex = PlayerPrefs.GetInt("Player Level");
+		playerHealth = PlayerPrefs.GetInt("Player Health");
 
-    void OnEnable()
+		score = PlayerPrefs.GetInt("Player Score");
+
+		if (PlayerPrefs.GetInt("Damage Upgrade") == 1)
+			damageAmpPurch =  true;
+		else
+			damageAmpPurch = false;
+
+	}
+
+	void OnEnable()
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
     }
@@ -51,8 +68,19 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // This will be used to store all the level names
-    private void InitializeLevelNames()
+	private void OnApplicationQuit()
+	{
+		if (!isPlayerDead)
+		{
+			PlayerPrefs.SetInt("Player Level", levelIndex);
+			PlayerPrefs.SetInt("Player Health", playerHealth);
+			PlayerPrefs.SetInt("Player Score", score);
+			PlayerPrefs.SetInt("Damage Upgrade", damageAmpPurch ? 1 : 0);
+		}
+	}
+
+	// This will be used to store all the level names
+	private void InitializeLevelNames()
     {
         levelNames.Add("Next Level Name");
     }
@@ -81,4 +109,9 @@ public class GameController : MonoBehaviour
     {
         return playerHealth;
     }
+
+	public int GetMaxHealth()
+	{
+		return maxHealth;
+	}
 }

@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStatus : MonoBehaviour
 {
 	public float health;
+	public AudioSource HitSound;
 
 	private void Start()
 	{
@@ -22,15 +23,16 @@ public class PlayerStatus : MonoBehaviour
 		Death();
 	}
 
+	// Bug where death sound terminates early on death
 	public void Death()
 	{
 		if (health <= 0)
-		{
-			Debug.Log("DEAD");
-			Destroy(gameObject);
+		{			
 			PostScore();
             GameController.instance.isPlayerDead = true;
 			SceneManager.LoadScene("MainMenu");
+			PlayerPrefs.SetInt("Player Health", 0);
+
 		}
 	}
 
@@ -40,6 +42,7 @@ public class PlayerStatus : MonoBehaviour
 		if (col.gameObject.tag.Equals("EnemyBullet"))
 		{
 			GameController.instance.ChangeHealth(-30);
+			HitSound.Play();
 			Destroy(col.gameObject);
 		}
 	}
