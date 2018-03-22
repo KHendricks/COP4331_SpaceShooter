@@ -41,7 +41,7 @@ public class PlayerStatus : MonoBehaviour
 		// When the player is hit by a generic bullet
 		if (col.gameObject.tag.Equals("EnemyBullet"))
 		{
-			GameController.instance.ChangeHealth(-30);
+			GameController.instance.ChangeHealth(-(int)col.gameObject.GetComponent<EnemyBullet>().damage);
 			HitSound.Play();
 			Destroy(col.gameObject);
 		}

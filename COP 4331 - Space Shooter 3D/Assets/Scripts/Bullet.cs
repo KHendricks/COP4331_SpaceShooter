@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
     
     void OnCollisionEnter (Collision col)
     {
-        if(col.gameObject.name != "Bullet(Clone)"&& col.gameObject.name != "Ship")
+        if(col.gameObject.name != "Bullet(Clone)"&& col.gameObject.name != "Ship" && col.gameObject.name != "Player")
         {
 			Destroy(gameObject);
         }

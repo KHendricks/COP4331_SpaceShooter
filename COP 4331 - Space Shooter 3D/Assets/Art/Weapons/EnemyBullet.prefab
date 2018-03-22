@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 95946969832973662}
   - component: {fileID: 54146457911449558}
   - component: {fileID: 65660294449177846}
-  - component: {fileID: 114203172822891246}
   - component: {fileID: 114548430249903514}
+  - component: {fileID: 114418113717377666}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -131,7 +131,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114203172822891246
+--- !u!114 &114418113717377666
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,13 +139,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1803874008746296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd04a33e16ac741e48ee2c3604933146, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dd6f93ee6cb54945aea72a87542f720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
-  player: {fileID: 0}
-  deathTime: 4
 --- !u!114 &114548430249903514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,7 +161,8 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1

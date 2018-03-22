@@ -4,7 +4,7 @@ public class Shipguns : MonoBehaviour
 {
 	public float damage = 10f;
 	public float speed = 100f;
-	public float delayMax = 16f;
+	public float delayMax = 160f;
 	public float delay = 0;
 	public GameObject bullet;
 	public GameObject bulletInst;
@@ -15,10 +15,9 @@ public class Shipguns : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown("space"))
-		{
-			Shoot();
-		}
+
+		if(delay>0)
+			delay--;
 	}
 
 	public void Shoot()
@@ -38,10 +37,6 @@ public class Shipguns : MonoBehaviour
 
 			// Added tag to the bullet
 			bulletInst.gameObject.tag = "Bullet";
-		}
-		else
-		{
-			delay--;
 		}
 	}
 }

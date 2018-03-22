@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	private GameObject endGoal;
 	public MovementNub movementNub;
-	public MovementNub shootRotateNub;
+	public ButtonPress shootNub;
 	public GameObject playerShip;
 	private float posy;
 	private UnityEngine.AI.NavMeshAgent agent;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start()
 	{
-		rb = GetComponent<Rigidbody>();
+		
 		posy = transform.position.y;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		endGoal = GameObject.Find("EndPoint");
@@ -45,9 +45,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(DamageAmp());
             });
         }
+        rb = playerShip.GetComponent<Rigidbody>();
 	}
 
-	void LateUpdate ()
+	void Update ()
  	{
 		PlayerMovement();
 		scoreText.text = "" + GameController.instance.GetScore();
@@ -61,33 +62,21 @@ public class PlayerController : MonoBehaviour
 		float rotHorizontal = 0;
 		float rotVertical = 0;
 		Vector3 look = transform.position;
-
+		Vector3 movement;
 		// Joystick Movement
 		if (movementNub.inputVector != Vector3.zero)
 		{
 			moveHorizontal = movementNub.inputVector.x;
 			moveVertical = movementNub.inputVector.z;
-		}
+		} 
 		// Shooting nub
-		if (shootRotateNub.inputVector != Vector3.zero)
+		if(shootNub.isPressed)
 		{
+			
 			playerShip.GetComponent<Shipguns>().Shoot();
-			rotHorizontal = shootRotateNub.inputVector.x;
-			rotVertical = shootRotateNub.inputVector.z;
-
-			// Move the corsshair where the player is shooting
-			dir = mainCam.WorldToScreenPoint(playerShip.GetComponent<Shipguns>().bulletInst.GetComponent<Bullet>().shootDir.GetPoint(400));
-			crosshair.transform.position = Vector3.MoveTowards(crosshair.transform.position, dir, sensitivity * Time.deltaTime);
 		}
-
-		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.right*moveHorizontal*speed*2))
-		{
-			playerShip.transform.position = playerShip.transform.position + transform.right*moveHorizontal*speed;
-		}
-		if(GetComponent<Collider>().bounds.Contains(playerShip.transform.position + transform.up*moveVertical*speed*2))
-		{
-			playerShip.transform.position = playerShip.transform.position + transform.up*moveVertical*speed;
-		}
+		
+		rb.AddForce(transform.right*moveHorizontal*speed + transform.up*moveVertical*speed,ForceMode.Impulse);
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
 	}
 
