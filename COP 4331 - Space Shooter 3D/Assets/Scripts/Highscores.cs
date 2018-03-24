@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Highscores : MonoBehaviour 
 {
@@ -65,6 +66,11 @@ public class Highscores : MonoBehaviour
 			highscoreList[i] = new Highscore(entryInfo[0], int.Parse(entryInfo[1]));
 			Debug.Log(highscoreList[i].username + " : " + highscoreList[i].score);
 		}
+	}
+
+	public void MainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
 	}
 }
 
