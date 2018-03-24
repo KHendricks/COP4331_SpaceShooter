@@ -6,11 +6,19 @@ using UnityEngine.UI;
 
 public class EndOfGameScript : MonoBehaviour 
 {
-	public Text score;
+	public Text score, usernameText;
+	public GameObject postScoreBtn;
 
 	// Use this for initialization
 	void Start () 
 	{
+		string username = PlayerPrefs.GetString("Username");
+		usernameText.text = username;
+		if (username == "")
+			postScoreBtn.SetActive(false);
+		else
+			postScoreBtn.SetActive(true);
+
 		score.text = PlayerPrefs.GetInt("Player Score").ToString();
 	}
 
