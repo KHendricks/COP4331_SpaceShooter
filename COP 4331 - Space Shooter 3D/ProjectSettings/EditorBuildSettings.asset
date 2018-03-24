@@ -17,3 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UpgradeScreen.unity
     guid: ae04b166922b09442bafbdc639aaf7b9
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 57c7a256c9abcb34a997bdf16d62f713
+  - enabled: 1
+    path: Assets/Scenes/EndOfGame.unity
+    guid: a5e4175da6affa6479f2576badb1b5e4

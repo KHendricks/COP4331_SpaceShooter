@@ -69,7 +69,6 @@ public class MainMenu : MonoBehaviour
 	public void OnMultiplayerClick()
 	{
 		SceneManager.LoadScene("MultiplayerLevel");
-
 	}
 
 	public void SignOut()
@@ -85,9 +84,6 @@ public class MainMenu : MonoBehaviour
 
 	public void OnLeaderboardClick()
 	{
-		if (Social.localUser.authenticated)
-		{
-			Social.ShowLeaderboardUI();
-		}
+		SceneManager.LoadScene("Leaderboard");
 	}
 }
