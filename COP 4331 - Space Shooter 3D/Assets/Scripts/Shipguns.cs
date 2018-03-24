@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Shipguns : MonoBehaviour
 {
-	public float damage = 10f;
+    public double damage = 0;
 	public float speed = 100f;
 	public float delayMax = 160f;
 	public float delay = 0;

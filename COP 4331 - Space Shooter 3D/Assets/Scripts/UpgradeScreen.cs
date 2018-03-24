@@ -8,12 +8,19 @@ public class UpgradeScreen : MonoBehaviour
 {
 	public Text scoreText;
     public Text healthText;
+
     public Button healthButton;
+    public Text healthUpgradeText;
+    public Text healthCostText;
+
     public Button damageAmpButton;
+    public Text damageAmpCostText;
+
     public Button continueButton;
 
-    private int healthCost = 20;
-    private int damageCost = 100;
+    private int healthCost = 100;
+    private int healthAmount = 10;
+    private int damageCost = 500;
 
 	void Start()
 	{
@@ -36,19 +43,22 @@ public class UpgradeScreen : MonoBehaviour
         }
 
 		scoreText.text = "SCORE\n" + GameController.instance.GetScore();
-
         healthText.text = "HEALTH: " + GameController.instance.GetHealth();
+        healthUpgradeText.text = "+ " + healthAmount + " HEALTH";
+        healthCostText.text = "COST: " + healthCost;
+        damageAmpCostText.text = "COST: " + damageCost;
+
         healthButton.onClick.AddListener(delegate()
         {
             HealthUpgrade();
         });
 
-        damageAmpButton.onClick.AddListener(delegate ()
+        damageAmpButton.onClick.AddListener(delegate()
         {
             DamageUpgrade();
         });
 
-        continueButton.onClick.AddListener(delegate ()
+        continueButton.onClick.AddListener(delegate()
         {
             SceneManager.LoadScene("Level1");
         });
@@ -74,6 +84,7 @@ public class UpgradeScreen : MonoBehaviour
     {
         if (!GameController.instance.damageAmpPurch && GameController.instance.GetScore() >= damageCost)
         {
+            PlayerPrefs.SetInt("Damage Upgrade", 1);
             GameController.instance.damageAmpPurch = true;
             GameController.instance.AddToScore(-damageCost);
             scoreText.text = "SCORE\n" + GameController.instance.GetScore();

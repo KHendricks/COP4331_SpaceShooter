@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
 		}
 
 		InitializeLevelNames();
+        PlayerPrefs.SetInt("Damage Upgrade", 0);
 	}
 	
 	

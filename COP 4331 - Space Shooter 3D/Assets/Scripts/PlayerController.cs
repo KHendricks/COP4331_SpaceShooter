@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
 	private Vector3 dir;
 	private float sensitivity = 300;
 
-    public Button damageAmpButton;
+    public GameObject damageAmpButton;
     public Text damageAmpText;
-    private double damage = 10;
+    public Text countdownText;
+
+    public int damageTimer = 60;
 
 	void Start()
 	{
@@ -35,16 +37,21 @@ public class PlayerController : MonoBehaviour
 		Debug.Log(endGoal.transform.position);
         agent.destination = endGoal.transform.position;
 
-        if (GameController.instance.damageAmpPurch)
+        if (GameController.instance.damageAmpPurch || PlayerPrefs.GetInt("Damage Upgrade") == 1)
         {
-            damageAmpButton.interactable = true;
+            damageAmpButton.SetActive(true);
             damageAmpText.text = "DMG";
 
-            damageAmpButton.onClick.AddListener(delegate ()
+            damageAmpButton.GetComponent<Button>().onClick.AddListener(delegate ()
             {
                 StartCoroutine(DamageAmp());
             });
         }
+        else
+        {
+            damageAmpButton.SetActive(false);
+        }
+
         rb = playerShip.GetComponent<Rigidbody>();
 	}
 
@@ -80,15 +87,31 @@ public class PlayerController : MonoBehaviour
 		playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation,Quaternion.Euler(transform.eulerAngles.x + -rotVertical*5,transform.eulerAngles.y + rotHorizontal*5,0),0.8f);
 	}
 
-    // Increases damage by 1.5% for 1 minute
+    // Increases damage by 50% for 1 minute
     IEnumerator DamageAmp()
     {
-        damageAmpButton.interactable = false;
+        damageAmpButton.SetActive(false);
         damageAmpText.text = "";
         GameController.instance.damageAmpPurch = false;
-        damage = damage * 1.5;
-        yield return new WaitForSecondsRealtime(60);
+        PlayerPrefs.SetInt("Damage Upgrade", 0);
+        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage * 1.5;
+
+        int timer = damageTimer;
+        bool flag = true;
+        countdownText.text = ("") + timer;
+
+        while(flag)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            countdownText.text = ("") + (--timer);
+
+            if (timer <= 0)
+                flag = false;
+        }
+
+        countdownText.text = ("");
         Debug.Log("ended");
-        damage = damage / 1.5;
+
+        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage / 1.5;
     }
 }

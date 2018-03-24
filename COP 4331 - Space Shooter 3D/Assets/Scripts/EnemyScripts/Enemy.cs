@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 	public int health;
 	public int scoreOnDeath;
-	public float damage;
+	public double damage;
 	public Vector3 speed = new Vector3(0,0,0);
 	public Vector3 magnitude = new Vector3(0,0,0);
 	public Vector3 rotationMagnitude = new Vector3(0,0,0);
@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 	
 
     public GameObject explosionEffect;
+    public GameObject impactEffect;
 	
 	public void Start()
 	{
@@ -53,12 +54,13 @@ public class Enemy : MonoBehaviour
 		
 		if (col.gameObject.tag.Equals("Bullet"))
 		{
-			float damage = 0;
+			double damage = 0;
 			if(col.gameObject.GetComponent<Bullet>() != null)
 				damage = col.gameObject.GetComponent<Bullet>().damage;
 			if(damage > 0f)
 				health = health - (int)damage;
 			Destroy(col.gameObject);
+            Instantiate(impactEffect, transform.position, transform.rotation);
 		}
 	}
 

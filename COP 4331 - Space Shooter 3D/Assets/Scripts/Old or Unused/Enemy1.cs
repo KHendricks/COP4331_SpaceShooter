@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy1 : MonoBehaviour
 {
-	public float health = 30;
+	public double health = 30;
 
 	private GameObject player;
 	
@@ -13,7 +13,7 @@ public class Enemy1 : MonoBehaviour
 	}
 	
 
-	public void TakeDamage(float damageTaken)
+	public void TakeDamage(double damageTaken)
 	{
 		health -= damageTaken;
 
