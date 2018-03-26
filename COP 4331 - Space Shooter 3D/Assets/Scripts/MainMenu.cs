@@ -25,9 +25,12 @@ public class MainMenu : MonoBehaviour
 
 	public void NewGame()
 	{
+		// Deletes all PlayerPrefs but we should still preserve username before
+		string username = PlayerPrefs.GetString("Username");
 		PlayerPrefs.DeleteAll();
-		PlayerPrefs.SetInt("Player Level", 1);
+		PlayerPrefs.SetString("Username", username);
 
+		PlayerPrefs.SetInt("Player Level", 1);
 		// This should be set "maxhealth" from the game controller not a static value
 		PlayerPrefs.SetInt("Player Health", 100);
 		PlayerPrefs.SetInt("Player Score", 0);
@@ -49,6 +52,7 @@ public class MainMenu : MonoBehaviour
 			Debug.Log("User is signed in");
 			disconnectedMenu.SetActive(false);
 			connectedMenu.SetActive(true);
+			PlayerPrefs.SetString("Username", PlayGamesPlatform.Instance.localUser.userName);
 		}
 		else
 		{
@@ -69,7 +73,6 @@ public class MainMenu : MonoBehaviour
 	public void OnMultiplayerClick()
 	{
 		SceneManager.LoadScene("MultiplayerLevel");
-
 	}
 
 	public void SignOut()
@@ -85,9 +88,6 @@ public class MainMenu : MonoBehaviour
 
 	public void OnLeaderboardClick()
 	{
-		if (Social.localUser.authenticated)
-		{
-			Social.ShowLeaderboardUI();
-		}
+		SceneManager.LoadScene("Leaderboard");
 	}
 }
