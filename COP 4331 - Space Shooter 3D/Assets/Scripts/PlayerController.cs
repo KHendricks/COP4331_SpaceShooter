@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
+		rb = playerShip.GetComponent<Rigidbody>();
         posy = transform.position.y;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         endGoal = GameObject.Find("EndPoint");
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             bombButton.SetActive(false);
         }
 
-        rb = playerShip.GetComponent<Rigidbody>();
+        
     }
 
     void Update()

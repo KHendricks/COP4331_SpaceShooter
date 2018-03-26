@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShootingEnemy : Enemy
 {
-	public enum ShotType {Regular,Homing};
 	
 	public float bulletDamage = 10f;
 	public float bulletSpeed = 100f;
@@ -12,7 +11,9 @@ public class ShootingEnemy : Enemy
 
 	public GameObject bullet;
 	private GameObject bulletInst;
-	public ShotType attack = ShotType.Regular;
+	private GameObject player;
+		
+	public EnemyBullet.ShotType attack = EnemyBullet.ShotType.Regular;
 
 	void Start()
 	{
@@ -22,10 +23,14 @@ public class ShootingEnemy : Enemy
 	
 	private void ShootStartup()
 	{
-		if (attack == ShotType.Regular)
+		player = GameObject.FindGameObjectWithTag("Player");
+		if (attack == EnemyBullet.ShotType.Regular)
 			InvokeRepeating("NormalShoot", 0, bulletDelay);
-		else if (attack == ShotType.Homing)
+		else if (attack == EnemyBullet.ShotType.Homing)
 			InvokeRepeating("HomingShoot", 0, bulletDelay);		
+		else if (attack == EnemyBullet.ShotType.Triple)
+			InvokeRepeating("TripleShoot", 0, bulletDelay);
+					
 	}
 	
 	public void Update()
@@ -35,21 +40,69 @@ public class ShootingEnemy : Enemy
 	
 	private void NormalShoot()
 	{
-		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
-		Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
-		bulletInst.GetComponent<Bullet>().damage = bulletDamage;
-		bulletInst.GetComponent<Bullet>().speed = bulletSpeed;
-		bulletInst.transform.rotation = transform.rotation;
-		bulletInst.GetComponent<Bullet>().player = gameObject;
 
-		// Added tag to the bullet
-		bulletInst.gameObject.tag = "EnemyBullet";
+		if(GetComponent<Renderer>().isVisible)
+		{
+			bulletInst = Instantiate(bullet, transform.position, transform.rotation);
+			Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
+			bulletInst.GetComponent<EnemyBullet>().damage = bulletDamage;
+			bulletInst.GetComponent<EnemyBullet>().speed = bulletSpeed;
+			bulletInst.GetComponent<EnemyBullet>().shootType = EnemyBullet.ShotType.Regular;
+			bulletInst.transform.rotation = transform.rotation;
+			bulletInst.GetComponent<EnemyBullet>().player = player;
+
+			// Added tag to the bullet
+			bulletInst.gameObject.tag = "EnemyBullet";
+		}
 	}
 
 	private void HomingShoot()
 	{
+		if(GetComponent<Renderer>().isVisible)
+		{
+			bulletInst = Instantiate(bullet, transform.position, transform.rotation);
+			Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
+			bulletInst.GetComponent<EnemyBullet>().damage = bulletDamage;
+			bulletInst.GetComponent<EnemyBullet>().speed = bulletSpeed;
+			bulletInst.GetComponent<EnemyBullet>().shootType = EnemyBullet.ShotType.Homing;
+			bulletInst.transform.rotation = transform.rotation;
+			bulletInst.GetComponent<EnemyBullet>().player = player;
+			// Added tag to the bullet
+			bulletInst.gameObject.tag = "EnemyBullet";
+		}
+	}
+	private void TripleShoot()
+	{
+		//-30
 		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
-
+		bulletInst.transform.Rotate(0,0,-30);
+		Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
+		bulletInst.GetComponent<EnemyBullet>().damage = bulletDamage;
+		bulletInst.GetComponent<EnemyBullet>().speed = bulletSpeed;
+		bulletInst.GetComponent<EnemyBullet>().shootType = EnemyBullet.ShotType.Triple;
+		bulletInst.transform.rotation = transform.rotation;
+		bulletInst.GetComponent<EnemyBullet>().player = player;
+		// Added tag to the bullet
+		bulletInst.gameObject.tag = "EnemyBullet";
+		//0
+		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
+		Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
+		bulletInst.GetComponent<EnemyBullet>().damage = bulletDamage;
+		bulletInst.GetComponent<EnemyBullet>().speed = bulletSpeed;
+		bulletInst.GetComponent<EnemyBullet>().shootType = EnemyBullet.ShotType.Triple;
+		bulletInst.transform.rotation = transform.rotation;
+		bulletInst.GetComponent<EnemyBullet>().player = player;
+		// Added tag to the bullet
+		bulletInst.gameObject.tag = "EnemyBullet";
+		//+30
+		bulletInst = Instantiate(bullet, transform.position, transform.rotation);
+		bulletInst.transform.Rotate(0,0,30);
+		Physics.IgnoreCollision(bulletInst.GetComponent<Collider>(), GetComponent<Collider>());
+		bulletInst.GetComponent<EnemyBullet>().damage = bulletDamage;
+		bulletInst.GetComponent<EnemyBullet>().speed = bulletSpeed;
+		bulletInst.GetComponent<EnemyBullet>().shootType = EnemyBullet.ShotType.Triple;
+		bulletInst.transform.rotation = transform.rotation;
+		bulletInst.GetComponent<EnemyBullet>().player = player;
 		// Added tag to the bullet
 		bulletInst.gameObject.tag = "EnemyBullet";
 	}

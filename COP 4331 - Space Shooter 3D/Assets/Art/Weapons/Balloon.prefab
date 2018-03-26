@@ -23,10 +23,10 @@ GameObject:
   - component: {fileID: 23995084925933416}
   - component: {fileID: 114965838195909488}
   - component: {fileID: 95083328976332710}
-  - component: {fileID: 114468622425441412}
   - component: {fileID: 65115010971825124}
   - component: {fileID: 54808358238178750}
-  m_Layer: 0
+  - component: {fileID: 114937226884788098}
+  m_Layer: 9
   m_Name: Balloon
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114468622425441412
+--- !u!114 &114937226884788098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -156,4 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  speed: 1
+  player: {fileID: 0}
   deathTime: 4
+  shootType: 0

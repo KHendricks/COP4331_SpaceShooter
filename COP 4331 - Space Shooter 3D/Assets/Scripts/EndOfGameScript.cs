@@ -12,19 +12,8 @@ public class EndOfGameScript : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		string username = PlayerPrefs.GetString("Username");
-		usernameText.text = username;
-		if (username == "")
-			postScoreBtn.SetActive(false);
-		else
-			postScoreBtn.SetActive(true);
-
 		score.text = PlayerPrefs.GetInt("Player Score").ToString();
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
+		PostScore();
 	}
 
 	public void MainMenu()
@@ -45,6 +34,6 @@ public class EndOfGameScript : MonoBehaviour
 		
 		if (username != "")
 			Highscores.AddNewHighscore(username, score);
-		SceneManager.LoadScene("Leaderboard");
+		// SceneManager.LoadScene("Leaderboard");
 	}
 }

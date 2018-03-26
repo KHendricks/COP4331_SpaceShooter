@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     public bool damageAmpPurch = false;
     public bool bombPurch = false;
     public bool isPlayerDead = false;
-	public int levelIndex = 1;
+	public int level = 1;
 
 	void Awake()
 	{
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
 	
 	void Start()
 	{
-		levelIndex = PlayerPrefs.GetInt("Player Level");
+		level = PlayerPrefs.GetInt("Player Level");
 		playerHealth = PlayerPrefs.GetInt("Player Health");
 
 		score = PlayerPrefs.GetInt("Player Score");
@@ -81,7 +81,7 @@ public class GameController : MonoBehaviour
 	{
 		if (!isPlayerDead)
 		{
-			PlayerPrefs.SetInt("Player Level", levelIndex);
+			PlayerPrefs.SetInt("Player Level", level);
 			PlayerPrefs.SetInt("Player Health", playerHealth);
 			PlayerPrefs.SetInt("Player Score", score);
 			PlayerPrefs.SetInt("Damage Upgrade", damageAmpPurch ? 1 : 0);
@@ -92,12 +92,21 @@ public class GameController : MonoBehaviour
 	// This will be used to store all the level names
 	private void InitializeLevelNames()
     {
-        levelNames.Add("Next Level Name");
+        levelNames.Add("Level1");
+        levelNames.Add("Level2");
     }
 
-    public void NextLevel(string nextLevel)
+    public void NextLevel()
     {
-        SceneManager.LoadScene(nextLevel, LoadSceneMode.Single);
+		if(level<levelNames.Count)
+		{
+			SceneManager.LoadScene(levelNames[level], LoadSceneMode.Single);
+			level++;
+		}
+		else
+		{
+			//You Win Script stuff
+		}
     }
 
     public void AddToScore(int val)

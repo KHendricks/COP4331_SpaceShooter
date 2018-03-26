@@ -76,10 +76,9 @@ public class UpgradeScreen : MonoBehaviour
         {
             BombUpgrade();
         });
-
-        continueButton.onClick.AddListener(delegate()
+        continueButton.onClick.AddListener(delegate ()
         {
-            SceneManager.LoadScene("Level1");
+            GameController.instance.NextLevel();
         });
     }
 
