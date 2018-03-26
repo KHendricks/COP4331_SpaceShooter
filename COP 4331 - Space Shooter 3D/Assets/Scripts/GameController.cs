@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private int playerHealth = 100;
 	private int maxHealth = 100;
     public bool damageAmpPurch = false;
+    public bool bombPurch = false;
     public bool isPlayerDead = false;
 	public int levelIndex = 1;
 
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
 
 		InitializeLevelNames();
         PlayerPrefs.SetInt("Damage Upgrade", 0);
+        PlayerPrefs.SetInt("Bomb Upgrade", 0);
 	}
 	
 	
@@ -45,6 +47,11 @@ public class GameController : MonoBehaviour
 			damageAmpPurch =  true;
 		else
 			damageAmpPurch = false;
+        
+        if (PlayerPrefs.GetInt("Bomb Upgrade") == 1)
+            bombPurch = true;
+        else
+            bombPurch = false;
 
 	}
 
@@ -65,6 +72,7 @@ public class GameController : MonoBehaviour
             playerHealth = 100;
             score = 0;
             damageAmpPurch = false;
+            bombPurch = false;
             isPlayerDead = false;
         }
     }
@@ -77,7 +85,8 @@ public class GameController : MonoBehaviour
 			PlayerPrefs.SetInt("Player Health", playerHealth);
 			PlayerPrefs.SetInt("Player Score", score);
 			PlayerPrefs.SetInt("Damage Upgrade", damageAmpPurch ? 1 : 0);
-		}
+            PlayerPrefs.SetInt("Bomb Upgrade", bombPurch ? 1 : 0);
+        }
 	}
 
 	// This will be used to store all the level names

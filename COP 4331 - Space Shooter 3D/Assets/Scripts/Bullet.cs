@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
 		}
     }
     
-    void OnCollisionEnter (Collision col)
+    public void OnCollisionEnter (Collision col)
     {
         if(col.gameObject.name != "Bullet(Clone)"&& col.gameObject.name != "Ship" && col.gameObject.name != "Player")
         {

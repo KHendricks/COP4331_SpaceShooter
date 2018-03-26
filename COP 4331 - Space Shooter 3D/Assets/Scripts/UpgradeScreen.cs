@@ -16,11 +16,15 @@ public class UpgradeScreen : MonoBehaviour
     public Button damageAmpButton;
     public Text damageAmpCostText;
 
+    public Button bombButton;
+    public Text bombCostText;
+
     public Button continueButton;
 
     private int healthCost = 100;
     private int healthAmount = 10;
     private int damageCost = 500;
+    private int bombCost = 1000;
 
 	void Start()
 	{
@@ -42,11 +46,21 @@ public class UpgradeScreen : MonoBehaviour
             ChangeColor(damageAmpButton, Color.red);
         }
 
-		scoreText.text = "SCORE\n" + GameController.instance.GetScore();
+        if (!GameController.instance.bombPurch)
+        {
+            ChangeColor(bombButton, Color.green);
+        }
+        else
+        {
+            ChangeColor(bombButton, Color.red);
+        }
+
+        scoreText.text = "SCORE\n" + GameController.instance.GetScore();
         healthText.text = "HEALTH: " + GameController.instance.GetHealth();
         healthUpgradeText.text = "+ " + healthAmount + " HEALTH";
         healthCostText.text = "COST: " + healthCost;
         damageAmpCostText.text = "COST: " + damageCost;
+        bombCostText.text = "COST: " + bombCost;
 
         healthButton.onClick.AddListener(delegate()
         {
@@ -56,6 +70,11 @@ public class UpgradeScreen : MonoBehaviour
         damageAmpButton.onClick.AddListener(delegate()
         {
             DamageUpgrade();
+        });
+
+        bombButton.onClick.AddListener(delegate ()
+        {
+            BombUpgrade();
         });
 
         continueButton.onClick.AddListener(delegate()
@@ -90,6 +109,19 @@ public class UpgradeScreen : MonoBehaviour
             scoreText.text = "SCORE\n" + GameController.instance.GetScore();
 
             ChangeColor(damageAmpButton, Color.red);
+        }
+    }
+
+    void BombUpgrade()
+    {
+        if (!GameController.instance.bombPurch && GameController.instance.GetScore() >= bombCost)
+        {
+            PlayerPrefs.SetInt("Bomb Upgrade", 1);
+            GameController.instance.bombPurch = true;
+            GameController.instance.AddToScore(-bombCost);
+            scoreText.text = "SCORE\n" + GameController.instance.GetScore();
+
+            ChangeColor(bombButton, Color.red);
         }
     }
 
