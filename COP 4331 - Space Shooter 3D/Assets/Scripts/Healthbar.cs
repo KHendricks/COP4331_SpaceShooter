@@ -12,7 +12,7 @@ public class Healthbar : MonoBehaviour
 
 	private void Start()
 	{
-		maxHealth = GameController.instance.GetHealth();
+		maxHealth = 100;
 	}
 
 	// Update is called once per frame
