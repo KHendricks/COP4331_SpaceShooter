@@ -28,11 +28,10 @@ public class PlayerStatus : MonoBehaviour
 	{
 		if (health <= 0)
 		{			
-			PostScore();
             GameController.instance.isPlayerDead = true;
-			SceneManager.LoadScene("MainMenu");
 			PlayerPrefs.SetInt("Player Health", 0);
-
+			PlayerPrefs.SetInt("Player Score", (int)GameController.instance.GetScore());
+			SceneManager.LoadScene("EndOfGame");
 		}
 	}
 
@@ -51,15 +50,5 @@ public class PlayerStatus : MonoBehaviour
 			HitSound.Play();
 			Destroy(col.gameObject);
 		}
-	}
-
-	private void PostScore()
-	{
-		float score = GameController.instance.GetScore();
-
-		Social.ReportScore((int)score, "PlayerName", (bool success) => 
-		{
-			// handle success or failure
-		});
 	}
 }

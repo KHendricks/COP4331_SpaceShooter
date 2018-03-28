@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -399,6 +399,56 @@ Prefab:
       propertyPath: winText
       value: 
       objectReference: {fileID: 468680198}
+    - target: {fileID: 114229692365531972, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114187377711836804, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114835350876278208, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937836408854314, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114455043243885056, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024002576588812, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403864611408984, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114596333949979568, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453088853909122, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270206561296574, guid: e3e38125964f647ca9c3d273f8febb0f,
+        type: 2}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e38125964f647ca9c3d273f8febb0f, type: 2}
   m_IsPrefabParent: 0
@@ -848,7 +898,7 @@ MonoBehaviour:
   damageAmpPurch: 0
   bombPurch: 0
   isPlayerDead: 0
-  levelIndex: 1
+  level: 1
 --- !u!4 &183026100
 Transform:
   m_ObjectHideFlags: 0
