@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4693581088394242}
   - component: {fileID: 33266045699350364}
-  - component: {fileID: 135747751853596434}
   - component: {fileID: 23465581541346190}
   - component: {fileID: 114135865472097600}
   - component: {fileID: 54599047067243498}
+  - component: {fileID: 135915810907060218}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MonoBehaviour:
   speed: 0
   player: {fileID: 0}
   explosion: {fileID: 1693175107773696, guid: 7086fbc000d3d5041a4ae80bb323e2ce, type: 2}
---- !u!135 &135747751853596434
+--- !u!135 &135915810907060218
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
