@@ -10,7 +10,7 @@ public class Bomb : MonoBehaviour
     private Rigidbody rb;
     public Ray shootDir;
     private int timer = 2;
-    private int bombRadius = 10;
+    private int bombRadius = 50;
 
     public GameObject explosion;
 
@@ -23,6 +23,8 @@ public class Bomb : MonoBehaviour
         shootDir = new Ray(transform.position, transform.forward);
 
         StartCoroutine(TickTick());
+
+        Physics.IgnoreLayerCollision(0, 0);
     }
 
     void Update()
@@ -34,7 +36,8 @@ public class Bomb : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
-            col.gameObject.GetComponent<Enemy>().health -= damage;
+            col.gameObject.GetComponent<Enemy>().health -= (damage * 2);
+            //Destroy(col.gameObject);
         }
     }
 
@@ -52,10 +55,10 @@ public class Bomb : MonoBehaviour
         }
 
         Debug.Log("BOOM");
-        GetComponent<SphereCollider>().radius = bombRadius;
-        yield return new WaitForSecondsRealtime(1);
-
+        Physics.IgnoreLayerCollision(0, 0, false);
+        gameObject.AddComponent<SphereCollider>().radius = bombRadius;
         Instantiate(explosion, transform.position, transform.rotation);
+        yield return new WaitForSecondsRealtime(1);
         Destroy(gameObject);
     }
 }
