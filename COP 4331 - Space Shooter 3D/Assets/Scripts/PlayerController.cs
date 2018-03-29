@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (GameController.instance.bombPurch || PlayerPrefs.GetInt("Bomb Upgrade") == 1)
         {
             bombButton.SetActive(true);
-            bombText.text = "MEGA";
+            bombText.text = "BOMB";
 
             bombButton.GetComponent<Button>().onClick.AddListener(delegate ()
             {
@@ -111,25 +111,25 @@ public class PlayerController : MonoBehaviour
         damageAmpText.text = "";
         GameController.instance.damageAmpPurch = false;
         PlayerPrefs.SetInt("Damage Upgrade", 0);
-        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage * 1.5;
+        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage * 2;
 
         int timer = damageTimer;
         bool flag = true;
-        countdownText.text = ("") + timer;
+        countdownText.text = ("DOUBLE DAMAGE: ") + timer;
 
         while (flag)
         {
             yield return new WaitForSecondsRealtime(1);
             countdownText.text = ("") + (--timer);
 
-            if (timer <= 0)
+            if (timer < 0)
                 flag = false;
         }
 
         countdownText.text = ("");
         Debug.Log("ended");
 
-        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage / 1.5;
+        playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage / 2;
     }
 
     void Bomb()

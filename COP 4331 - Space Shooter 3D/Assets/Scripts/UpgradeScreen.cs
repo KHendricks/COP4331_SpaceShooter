@@ -28,7 +28,7 @@ public class UpgradeScreen : MonoBehaviour
 
 	void Start()
 	{
-        if (GameController.instance.GetHealth() < 100)
+        if (GameController.instance.GetHealth() < 100 && GameController.instance.GetScore() >= healthCost)
         {
             ChangeColor(healthButton, Color.green);
         }
@@ -37,7 +37,7 @@ public class UpgradeScreen : MonoBehaviour
             ChangeColor(healthButton, Color.red);
         }
 
-        if (!GameController.instance.damageAmpPurch)
+        if (!GameController.instance.damageAmpPurch && GameController.instance.GetScore() >= damageCost)
         {
             ChangeColor(damageAmpButton, Color.green);
         }
@@ -46,7 +46,7 @@ public class UpgradeScreen : MonoBehaviour
             ChangeColor(damageAmpButton, Color.red);
         }
 
-        if (!GameController.instance.bombPurch)
+        if (!GameController.instance.bombPurch && GameController.instance.GetScore() >= bombCost)
         {
             ChangeColor(bombButton, Color.green);
         }
@@ -91,7 +91,7 @@ public class UpgradeScreen : MonoBehaviour
             healthText.text = "HEALTH: " + GameController.instance.GetHealth();
             scoreText.text = "SCORE\n" + GameController.instance.GetScore();
 
-            if (GameController.instance.GetHealth() >= 100)
+            if (GameController.instance.GetHealth() >= 100 || GameController.instance.GetScore() < healthCost)
             {
                 ChangeColor(healthButton, Color.red);
             }
