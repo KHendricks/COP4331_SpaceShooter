@@ -72,7 +72,7 @@ public class MainMenu : MonoBehaviour
 
 	public void OnMultiplayerClick()
 	{
-		SceneManager.LoadScene("MultiplayerLevel");
+		SceneManager.LoadScene("Level1_Multiplayer");
 	}
 
 	public void SignOut()
