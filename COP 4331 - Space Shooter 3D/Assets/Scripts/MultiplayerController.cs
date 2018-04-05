@@ -91,6 +91,5 @@ public class MultiplayerController : Photon.MonoBehaviour
 	IEnumerator WaitTime()
 	{
 		yield return new WaitForSeconds(3);
-
 	}
 }
