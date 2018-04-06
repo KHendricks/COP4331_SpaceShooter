@@ -1293,6 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeSceneName: Upgrade Screen
   damageAmpPurch: 0
+  fireSpeedPurch: 0
   bombPurch: 0
   isPlayerDead: 0
   level: 1
@@ -2697,16 +2698,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 195801478370654334, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 195801478370654334, guid: 007a6741a949a204da40e62dad807b3e,
-        type: 2}
-      propertyPath: m_ObstacleAvoidanceType
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 007a6741a949a204da40e62dad807b3e, type: 2}

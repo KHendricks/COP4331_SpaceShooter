@@ -22,22 +22,46 @@ public class PlayerController : MonoBehaviour
     private Vector3 dir;
     private float sensitivity = 300;
 
+    public GameObject fireSpeedButton;
+    public Text fireSpeedText;
+    public int fireSpeedTimer = 30;
+    public bool fireSpeedActivated;
+
     public GameObject damageAmpButton;
     public Text damageAmpText;
     public Text countdownText;
-    public int damageTimer = 60;
+    public int damageTimer = 30;
+    public bool damageAmpActivated;
 
     public GameObject bombButton;
     public Text bombText;
 
     void Start()
     {
-		rb = playerShip.GetComponent<Rigidbody>();
+        rb = playerShip.GetComponent<Rigidbody>();
         posy = transform.position.y;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         endGoal = GameObject.Find("EndPoint");
         Debug.Log(endGoal.transform.position);
         agent.destination = endGoal.transform.position;
+        fireSpeedActivated = false;
+        damageAmpActivated = false;
+
+        if (GameController.instance.fireSpeedPurch || PlayerPrefs.GetInt("Fire Speed Upgrade") == 1)
+        {
+            fireSpeedButton.SetActive(true);
+            fireSpeedText.text = "SPEED";
+
+            fireSpeedButton.GetComponent<Button>().onClick.AddListener(delegate ()
+            {
+                if (!damageAmpActivated)
+                    StartCoroutine(FireSpeed());
+            });
+        }
+        else
+        {
+            fireSpeedButton.SetActive(false);
+        }
 
         if (GameController.instance.damageAmpPurch || PlayerPrefs.GetInt("Damage Upgrade") == 1)
         {
@@ -46,7 +70,8 @@ public class PlayerController : MonoBehaviour
 
             damageAmpButton.GetComponent<Button>().onClick.AddListener(delegate ()
             {
-                StartCoroutine(DamageAmp());
+                if (!fireSpeedActivated)
+                    StartCoroutine(DamageAmp());
             });
         }
         else
@@ -69,7 +94,7 @@ public class PlayerController : MonoBehaviour
             bombButton.SetActive(false);
         }
 
-        
+
     }
 
     void Update()
@@ -104,9 +129,40 @@ public class PlayerController : MonoBehaviour
         playerShip.transform.rotation = Quaternion.Slerp(playerShip.transform.rotation, Quaternion.Euler(transform.eulerAngles.x + -rotVertical * 5, transform.eulerAngles.y + rotHorizontal * 5, 0), 0.8f);
     }
 
+    IEnumerator FireSpeed()
+    {
+        fireSpeedActivated = true;
+        fireSpeedButton.SetActive(false);
+        fireSpeedText.text = "";
+        GameController.instance.fireSpeedPurch = false;
+        PlayerPrefs.SetInt("Fire Speed Upgrade", 0);
+        playerShip.GetComponent<Shipguns>().delayMax = playerShip.GetComponent<Shipguns>().delayMax / 2;
+
+        int timer = fireSpeedTimer;
+        bool flag = true;
+        countdownText.text = ("DOUBLE FIRE SPEED");
+
+        while (flag)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            countdownText.text = ("") + (--timer);
+
+            if (timer < 0)
+                flag = false;
+        }
+
+        countdownText.text = ("");
+        Debug.Log("ended");
+
+        playerShip.GetComponent<Shipguns>().delayMax = playerShip.GetComponent<Shipguns>().delayMax * 2;
+
+        fireSpeedActivated = false;
+    }
+
     // Increases damage by 50% for 1 minute
     IEnumerator DamageAmp()
     {
+        damageAmpActivated = true;
         damageAmpButton.SetActive(false);
         damageAmpText.text = "";
         GameController.instance.damageAmpPurch = false;
@@ -115,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
         int timer = damageTimer;
         bool flag = true;
-        countdownText.text = ("DOUBLE DAMAGE: ") + timer;
+        countdownText.text = ("DOUBLE DAMAGE");
 
         while (flag)
         {
@@ -130,6 +186,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("ended");
 
         playerShip.GetComponent<Shipguns>().damage = playerShip.GetComponent<Shipguns>().damage / 2;
+        damageAmpActivated = false;
     }
 
     void Bomb()

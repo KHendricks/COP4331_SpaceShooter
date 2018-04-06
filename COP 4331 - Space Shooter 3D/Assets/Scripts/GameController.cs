@@ -4,58 +4,65 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour 
+public class GameController : MonoBehaviour
 {
-	public static GameController instance;
-	private List<string> levelNames = new List<string>(); // Store level names so we can access them all easily
-	public string upgradeSceneName = "UpgradeScreen";
-	private int score = 0;
+    public static GameController instance;
+    private List<string> levelNames = new List<string>(); // Store level names so we can access them all easily
+    public string upgradeSceneName = "UpgradeScreen";
+    private int score = 0;
     private int playerHealth = 100;
-	private int maxHealth = 100;
+    private int maxHealth = 100;
     public bool damageAmpPurch = false;
+    public bool fireSpeedPurch;
     public bool bombPurch = false;
     public bool isPlayerDead = false;
-	public int level = 1;
+    public int level = 1;
 
-	void Awake()
-	{
-		DontDestroyOnLoad(transform.gameObject);
-		
-		if (instance == null)
-		{
-			instance = this;
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
 
-		InitializeLevelNames();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        InitializeLevelNames();
         PlayerPrefs.SetInt("Damage Upgrade", 0);
         PlayerPrefs.SetInt("Bomb Upgrade", 0);
-	}
-	
-	
-	void Start()
-	{
-		level = PlayerPrefs.GetInt("Player Level");
-		playerHealth = PlayerPrefs.GetInt("Player Health");
+        PlayerPrefs.SetInt("Fire Speed Upgrade", 0);
+    }
 
-		score = PlayerPrefs.GetInt("Player Score");
 
-		if (PlayerPrefs.GetInt("Damage Upgrade") == 1)
-			damageAmpPurch =  true;
-		else
-			damageAmpPurch = false;
-        
+    void Start()
+    {
+        level = PlayerPrefs.GetInt("Player Level");
+        playerHealth = PlayerPrefs.GetInt("Player Health");
+
+        score = PlayerPrefs.GetInt("Player Score");
+
+        if (PlayerPrefs.GetInt("Damage Upgrade") == 1)
+            damageAmpPurch = true;
+        else
+            damageAmpPurch = false;
+
         if (PlayerPrefs.GetInt("Bomb Upgrade") == 1)
             bombPurch = true;
         else
             bombPurch = false;
 
-	}
+        if (PlayerPrefs.GetInt("Fire Speed Upgrade") == 1)
+            fireSpeedPurch = true;
+        else
+            fireSpeedPurch = false;
 
-	void OnEnable()
+    }
+
+    void OnEnable()
     {
         SceneManager.sceneLoaded += OnLevelLoaded;
     }
@@ -67,30 +74,32 @@ public class GameController : MonoBehaviour
 
     void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(isPlayerDead)
+        if (isPlayerDead)
         {
             playerHealth = 100;
             score = 0;
             damageAmpPurch = false;
             bombPurch = false;
+            fireSpeedPurch = false;
             isPlayerDead = false;
         }
     }
 
-	private void OnApplicationQuit()
-	{
-		if (!isPlayerDead)
-		{
-			PlayerPrefs.SetInt("Player Level", level);
-			PlayerPrefs.SetInt("Player Health", playerHealth);
-			PlayerPrefs.SetInt("Player Score", score);
-			PlayerPrefs.SetInt("Damage Upgrade", damageAmpPurch ? 1 : 0);
+    private void OnApplicationQuit()
+    {
+        if (!isPlayerDead)
+        {
+            PlayerPrefs.SetInt("Player Level", level);
+            PlayerPrefs.SetInt("Player Health", playerHealth);
+            PlayerPrefs.SetInt("Player Score", score);
+            PlayerPrefs.SetInt("Damage Upgrade", damageAmpPurch ? 1 : 0);
             PlayerPrefs.SetInt("Bomb Upgrade", bombPurch ? 1 : 0);
+            PlayerPrefs.SetInt("Fire Speed Upgrade", fireSpeedPurch ? 1 : 0);
         }
-	}
+    }
 
-	// This will be used to store all the level names
-	private void InitializeLevelNames()
+    // This will be used to store all the level names
+    private void InitializeLevelNames()
     {
         levelNames.Add("Level1");
         levelNames.Add("Level2");
@@ -98,26 +107,26 @@ public class GameController : MonoBehaviour
 
     public void NextLevel()
     {
-		if(level<levelNames.Count)
-		{
-			SceneManager.LoadScene(levelNames[level], LoadSceneMode.Single);
-			level++;
-		}
-		else
-		{
-			//You Win Script stuff
-		}
+        if (level < levelNames.Count)
+        {
+            SceneManager.LoadScene(levelNames[level], LoadSceneMode.Single);
+            level++;
+        }
+        else
+        {
+            //You Win Script stuff
+        }
     }
 
     public void AddToScore(int val)
-	{
-		score += val;
-	}
+    {
+        score += val;
+    }
 
-	public float GetScore()
-	{
-		return score;
-	}
+    public float GetScore()
+    {
+        return score;
+    }
 
     public void ChangeHealth(int val)
     {
@@ -129,8 +138,8 @@ public class GameController : MonoBehaviour
         return playerHealth;
     }
 
-	public int GetMaxHealth()
-	{
-		return maxHealth;
-	}
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
 }

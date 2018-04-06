@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UpgradeScreen : MonoBehaviour 
+public class UpgradeScreen : MonoBehaviour
 {
-	public Text scoreText;
+    public Text scoreText;
     public Text healthText;
 
     public Button healthButton;
     public Text healthUpgradeText;
     public Text healthCostText;
+
+    public Button fireSpeedButton;
+    public Text fireSpeedText;
+    public Text fireSpeedCostText;
 
     public Button damageAmpButton;
     public Text damageAmpCostText;
@@ -23,11 +27,12 @@ public class UpgradeScreen : MonoBehaviour
 
     private int healthCost = 100;
     private int healthAmount = 10;
-    private int damageCost = 500;
+    private int damageCost = 300;
     private int bombCost = 1000;
+    private int fireSpeedCost = 500;
 
-	void Start()
-	{
+    void Start()
+    {
         if (GameController.instance.GetHealth() < 100 && GameController.instance.GetScore() >= healthCost)
         {
             ChangeColor(healthButton, Color.green);
@@ -46,6 +51,15 @@ public class UpgradeScreen : MonoBehaviour
             ChangeColor(damageAmpButton, Color.red);
         }
 
+        if (!GameController.instance.fireSpeedPurch && GameController.instance.GetScore() >= fireSpeedCost)
+        {
+            ChangeColor(fireSpeedButton, Color.green);
+        }
+        else
+        {
+            ChangeColor(fireSpeedButton, Color.red);
+        }
+
         if (!GameController.instance.bombPurch && GameController.instance.GetScore() >= bombCost)
         {
             ChangeColor(bombButton, Color.green);
@@ -59,17 +73,23 @@ public class UpgradeScreen : MonoBehaviour
         healthText.text = "HEALTH: " + GameController.instance.GetHealth();
         healthUpgradeText.text = "+ " + healthAmount + " HEALTH";
         healthCostText.text = "COST: " + healthCost;
+        fireSpeedCostText.text = "COST: " + fireSpeedCost;
         damageAmpCostText.text = "COST: " + damageCost;
         bombCostText.text = "COST: " + bombCost;
 
-        healthButton.onClick.AddListener(delegate()
+        healthButton.onClick.AddListener(delegate ()
         {
             HealthUpgrade();
         });
 
-        damageAmpButton.onClick.AddListener(delegate()
+        damageAmpButton.onClick.AddListener(delegate ()
         {
             DamageUpgrade();
+        });
+
+        fireSpeedButton.onClick.AddListener(delegate ()
+        {
+            FireSpeedUpgrade();
         });
 
         bombButton.onClick.AddListener(delegate ()
@@ -80,6 +100,18 @@ public class UpgradeScreen : MonoBehaviour
         {
             GameController.instance.NextLevel();
         });
+    }
+
+    void Update()
+    {
+        if (GameController.instance.GetScore() < healthCost)
+            ChangeColor(healthButton, Color.red);
+        if (GameController.instance.GetScore() < damageCost)
+            ChangeColor(damageAmpButton, Color.red);
+        if (GameController.instance.GetScore() < fireSpeedCost)
+            ChangeColor(fireSpeedButton, Color.red);
+        if (GameController.instance.GetScore() < bombCost)
+            ChangeColor(bombButton, Color.red);
     }
 
     void HealthUpgrade()
@@ -106,8 +138,19 @@ public class UpgradeScreen : MonoBehaviour
             GameController.instance.damageAmpPurch = true;
             GameController.instance.AddToScore(-damageCost);
             scoreText.text = "SCORE\n" + GameController.instance.GetScore();
-
             ChangeColor(damageAmpButton, Color.red);
+        }
+    }
+
+    void FireSpeedUpgrade()
+    {
+        if (!GameController.instance.fireSpeedPurch && GameController.instance.GetScore() >= fireSpeedCost)
+        {
+            PlayerPrefs.SetInt("Fire Speed Upgrade", 1);
+            GameController.instance.fireSpeedPurch = true;
+            GameController.instance.AddToScore(-fireSpeedCost);
+            scoreText.text = "SCORE\n" + GameController.instance.GetScore();
+            ChangeColor(fireSpeedButton, Color.red);
         }
     }
 
@@ -119,7 +162,6 @@ public class UpgradeScreen : MonoBehaviour
             GameController.instance.bombPurch = true;
             GameController.instance.AddToScore(-bombCost);
             scoreText.text = "SCORE\n" + GameController.instance.GetScore();
-
             ChangeColor(bombButton, Color.red);
         }
     }
