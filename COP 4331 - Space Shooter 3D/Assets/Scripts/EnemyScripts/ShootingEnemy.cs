@@ -10,8 +10,8 @@ public class ShootingEnemy : Enemy
 	public float bulletDelay = 1f;
 
 	public GameObject bullet;
-	private GameObject bulletInst;
-	private GameObject player;
+	public GameObject bulletInst;
+	public GameObject player;
 		
 	public EnemyBullet.ShotType attack = EnemyBullet.ShotType.Regular;
 

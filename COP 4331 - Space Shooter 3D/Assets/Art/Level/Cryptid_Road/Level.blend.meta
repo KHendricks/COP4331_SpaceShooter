@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9c6510a6bb1d643828fd52de65dcf806
-timeCreated: 1522336845
+timeCreated: 1523058981
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -709,6 +709,7 @@ ModelImporter:
     2100006: Material_003
     2100008: Material_005
     2100010: Material
+    2100012: Material__map3_png
     2300000: Ground
     2300002: Path
     2300004: Tree1

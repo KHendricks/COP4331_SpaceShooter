@@ -103,6 +103,7 @@ public class GameController : MonoBehaviour
     {
         levelNames.Add("Level1");
         levelNames.Add("Level2");
+        levelNames.Add("Level3");
     }
 
     public void NextLevel()
