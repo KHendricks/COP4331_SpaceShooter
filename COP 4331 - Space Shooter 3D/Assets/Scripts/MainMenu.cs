@@ -70,10 +70,44 @@ public class MainMenu : MonoBehaviour
 		});
 	}
 
-	public void OnMultiplayerClick()
+	public void OnCircusClick()
 	{
+		// Deletes all PlayerPrefs but we should still preserve username before
+		string username = PlayerPrefs.GetString("Username");
+		PlayerPrefs.DeleteAll();
+		PlayerPrefs.SetString("Username", username);
+
+		// This should be set "maxhealth" from the game controller not a static value
+		PlayerPrefs.SetInt("Player Health", 100);
+		PlayerPrefs.SetInt("Player Score", 0);
 		SceneManager.LoadScene("Level1_Multiplayer");
 	}
+
+	public void OnFastFoodClick()
+	{
+		// Deletes all PlayerPrefs but we should still preserve username before
+		string username = PlayerPrefs.GetString("Username");
+		PlayerPrefs.DeleteAll();
+		PlayerPrefs.SetString("Username", username);
+
+		// This should be set "maxhealth" from the game controller not a static value
+		PlayerPrefs.SetInt("Player Health", 100);
+		PlayerPrefs.SetInt("Player Score", 0);
+		SceneManager.LoadScene("Level2_Multiplayer");
+	}
+	public void OnForestClick()
+	{
+		// Deletes all PlayerPrefs but we should still preserve username before
+		string username = PlayerPrefs.GetString("Username");
+		PlayerPrefs.DeleteAll();
+		PlayerPrefs.SetString("Username", username);
+
+		// This should be set "maxhealth" from the game controller not a static value
+		PlayerPrefs.SetInt("Player Health", 100);
+		PlayerPrefs.SetInt("Player Score", 0);
+		SceneManager.LoadScene("Level3_Multiplayer");
+	}
+
 
 	public void SignOut()
 	{

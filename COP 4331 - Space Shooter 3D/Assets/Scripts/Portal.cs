@@ -21,6 +21,23 @@ public class Portal : MonoBehaviour
     	winText.text = "SUCCESS";
         yield return new WaitForSecondsRealtime(3);
         winText.text = "";
-		SceneManager.LoadScene("UpgradeScreen", LoadSceneMode.Single);
+
+		// for multiplayer
+		if (SceneManager.GetActiveScene().name == "Level1_Multiplayer")
+		{
+			SceneManager.LoadScene("EndOfGame");
+		}
+		else if (SceneManager.GetActiveScene().name == "Level2_Multiplayer")
+		{
+			SceneManager.LoadScene("EndOfGame");
+		}
+		else if (SceneManager.GetActiveScene().name == "Level3_Multiplayer")
+		{
+			SceneManager.LoadScene("EndOfGame");
+		}
+		else
+		{
+			SceneManager.LoadScene("UpgradeScreen", LoadSceneMode.Single);
+		}
     }
 }

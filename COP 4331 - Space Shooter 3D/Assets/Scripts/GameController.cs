@@ -108,6 +108,12 @@ public class GameController : MonoBehaviour
 
     public void NextLevel()
     {
+		// for multiplayer
+		if (SceneManager.GetActiveScene().name == "Level1_Multiplayer")
+		{
+			SceneManager.LoadScene("EndOfGame");
+		}
+
         if (level < levelNames.Count)
         {
             SceneManager.LoadScene(levelNames[level], LoadSceneMode.Single);

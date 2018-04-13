@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,6 +70,15 @@ public class Enemy : MonoBehaviour
 		if (health <= 0)
 		{
             Instantiate(explosionEffect, transform.position, transform.rotation);
+			try
+			{
+				PhotonNetwork.Destroy(gameObject);
+			}
+			catch (Exception e)
+			{
+				throw;
+			}
+
 			Destroy(gameObject);
 			GameController.instance.AddToScore(scoreOnDeath);
 		}
