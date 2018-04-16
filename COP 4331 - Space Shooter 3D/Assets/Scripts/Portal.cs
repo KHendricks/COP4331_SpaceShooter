@@ -35,6 +35,10 @@ public class Portal : MonoBehaviour
 		{
 			SceneManager.LoadScene("EndOfGame");
 		}
+        else if(SceneManager.GetActiveScene().name == "Level3")
+        {
+            SceneManager.LoadScene("EndOfGame");
+        }
 		else
 		{
 			SceneManager.LoadScene("UpgradeScreen", LoadSceneMode.Single);
